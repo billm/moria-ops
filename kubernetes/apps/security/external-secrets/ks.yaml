@@ -1,0 +1,39 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: security-external-secrets
+  namespace: flux-system
+spec:
+  path: ./kubernetes/apps/security/external-secrets/app
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  prune: true
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: security-external-secrets-stores
+  namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
+spec:
+  # Needs external-secrets CRDs
+  # Needs onepassword connect secrets
+  dependsOn:
+    - name: security-external-secrets
+    - name: security-onepassword-connect
+  path: ./kubernetes/apps/security/external-secrets/stores
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  prune: true
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
