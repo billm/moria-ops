@@ -1,0 +1,14 @@
+---
+kubernetes:
+  children:
+    master:
+      hosts:
+        dwarf1:
+          ansible_user: billm
+          ansible_host: 192.168.134.11
+        dwarf2:
+          ansible_user: billm
+          ansible_host: 192.168.134.12
+        dwarf3:
+          ansible_user: billm
+          ansible_host: 192.168.134.13
