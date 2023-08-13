@@ -1,0 +1,68 @@
+---
+- name: Play for setting up cluster storage
+  hosts:
+    - storage
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: WARNING - DESTRUCTIVE TASKS AHEAD - Pausing for 10 seconds...
+      ansible.builtin.pause:
+        seconds: 10
+  tasks:
+    - name: Configuration | Install smartmontools
+      ansible.builtin.apt:
+        name:
+          - smartmontools
+        state: present
+    - name: Configuration | Install Longhorn packages
+      ansible.builtin.apt:
+        name:
+          - open-iscsi
+          - bash
+          - curl
+          - grep
+        state: present
+    # # https://stackoverflow.com/a/75457010
+    # - name: Drive Configuration | Get Partition Info
+    #   community.general.parted:
+    #     device: /dev/nvme0n1
+    #     unit: s
+    #   register: sda_info
+
+    # - name: Drive Configuration | Set partition variables
+    #   ansible.builtin.set_fact:
+    #     # Set the next available partition number
+    #     partnum: "{{ lastsorted.num | int + 1 }}"
+    #     # Set to the first available sector (after last partition)
+    #     partstart: "{{ lastsorted.end | int + 1 }}"
+    #   vars:
+    #     # Find the last used partition in /dev/sda
+    #     lastsorted: "{{ sda_info.partitions | sort(attribute='num') | last }}"
+
+    # Warning - this configuration is specific to my cluster!
+    - name: Drive Configuration | Create Storage Partition
+      community.general.parted:
+        device: /dev/nvme0n1
+        number: 1
+#        number: "{{ partnum }}"
+        state: present
+        # Installing to SSD, leave 10% of disk for wear leveling in addition to vendors built in over-provisioning
+        part_start: 2048s
+#        part_start: "{{ partstart }}s"
+        part_end: 90%
+        fs_type: ext4
+
+    - name: Drive Configuration | Format storage volume
+      community.general.filesystem:
+        fstype: ext4
+#        dev: "/dev/nvme0n1p{{ partnum }}"
+        dev: "/dev/nvme0n1p1"
+        opts: -L longhorn
+        state: present
+    - name: Drive Configuration | Mount Storage Partition
+      ansible.posix.mount:
+        path: /var/lib/longhorn
+        src: LABEL=longhorn
+        fstype: ext4
+        state: mounted

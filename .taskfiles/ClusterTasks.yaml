@@ -79,3 +79,7 @@ tasks:
       - task: certificates
       - task: ingresses
       - task: pods
+  label-storage:
+    desc: Label storage nodes
+    cmds:
+      - kubectl get nodes -o=custom-columns=NAME:.metadata.name --no-headers=true | xargs -L1 bash -c 'kubectl label nodes $0 node.longhorn.io/create-default-disk=true'
