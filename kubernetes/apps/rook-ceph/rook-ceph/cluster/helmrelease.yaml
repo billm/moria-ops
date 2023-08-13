@@ -66,19 +66,8 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
               nodeSelectorTerms:
               - matchExpressions:
-                - key: role
-                  operator: In
-                  values:
-                  - control-plane
-        mon:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: role
-                  operator: In
-                  values:
-                  - control-plane
+                - key: node-role.kubernetes.io/control-plane
+                  operator: Exists
           tolerations:
           - effect: NoSchedule
             key: node-role.kubernetes.io/control-plane
