@@ -56,8 +56,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/hostname: "mail.${SECRET_DOMAIN}"
           io.cilium/lb-ipam-ips: "${SMTP_RELAY_IP}"
-        loadBalancerIP: "${SMTP_RELAY_IP}"
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
         ports:
           http:
             port: 2525
