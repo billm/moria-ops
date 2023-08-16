@@ -60,7 +60,7 @@ spec:
         annotations:
           hajimari.io/icon: icon-park-twotone:data-user
         hosts:
-          - host: &host "lldap.${SECRET_DOMAIN}"
+          - host: &host "ldap.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
