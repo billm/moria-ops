@@ -25,8 +25,8 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: storage-longhorn
-      namespace: flux-system
+    - name: longhorn
+      namespace: storage
   values:
     crds:
       create: true
