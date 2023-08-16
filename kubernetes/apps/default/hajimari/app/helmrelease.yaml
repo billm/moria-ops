@@ -41,6 +41,8 @@ spec:
           - database
           - default
           - monitoring
+          - networking
+          - security
           - storage
     ingress:
       main:
