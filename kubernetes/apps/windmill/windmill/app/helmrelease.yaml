@@ -39,6 +39,12 @@ spec:
       workerReplicas: 1
       lspReplicas: 1
       workerGroups: []
+      smtp:
+        enabled: true
+        host: mail-relay.networking.svc.cluster.local
+        port: 25
+        from: "windmill@${SECRET_DOMAIN}"
+        tls_implicit: false
     ingress:
       enabled: true
       className: internal
