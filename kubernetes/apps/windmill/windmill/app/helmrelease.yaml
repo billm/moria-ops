@@ -1,0 +1,77 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app windmill
+  namespace: windmill
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: windmill
+      version: 1.6.69
+      sourceRef:
+        kind: HelmRepository
+        name: windmill-labs
+        namespace: flux-system
+      interval: 15m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    app:
+      annotations:
+        secret.reloader.stakater.com/reload: &secret windmill-secret
+
+    postgresql:
+      enabled: false
+    minio:
+      enabled: false
+
+    windmill:
+      baseDomain: &host "windmill.${SECRET_DOMAIN}"
+      baseProtocol: https
+      appReplicas: 1
+      workerReplicas: 1
+      lspReplicas: 1
+      workerGroups: []
+    ingress:
+      enabled: true
+      className: internal
+      tls:
+        - hosts:
+            - *host
+  valuesFrom:
+    - kind: Secret
+      name: *secret
+      valuesKey: WINDMILL_POSTGRES_URL
+      targetPath: windmill.databaseUrl
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: windmill-app
+            spec:
+              template:
+                spec:
+                  volumes:
+                    - name: init-sql
+                      configMap:
+                        name: windmill-init-sql
+
+                  initContainers:
+                    - name: init-db
+                      image: ghcr.io/tomcranitch/postgres-initdb-with-sql:0.0.1@sha256:5511526d94123153cb09eaf7e9e8ab42ad80eda988fc40fb51956443bb334c00
+                      volumeMounts:
+                        - name: init-sql
+                          mountPath: /etc/init.sql
+                          subPath: init.sql
+                      envFrom:
+                        - secretRef:
+                            name: *secret
