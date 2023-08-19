@@ -38,15 +38,13 @@ spec:
       appReplicas: 1
       workerReplicas: 1
       lspReplicas: 1
+      exposeHostDocker: true
       workerGroups: []
       smtp:
         enabled: true
-        host: mail-relay.networking.svc.cluster.local
-        port: 25
+        port: 587
         from: "windmill@${SECRET_DOMAIN}"
         tls_implicit: false
-        username: null
-        password: null
     ingress:
       enabled: true
       className: internal
@@ -58,6 +56,19 @@ spec:
       name: *secret
       valuesKey: WINDMILL_POSTGRES_URL
       targetPath: windmill.databaseUrl
+    - kind: Secret
+      name: *secret
+      valuesKey: WINDMILL_SMTP_HOST
+      targetPath: windmill.smtp.host
+    - kind: Secret
+      name: *secret
+      valuesKey: WINDMILL_SMTP_USER
+      targetPath: windmill.smtp.password
+    - kind: Secret
+      name: *secret
+      valuesKey: WINDMILL_SMTP_PASSWORD
+      targetPath: windmill.smtp.password
+
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
