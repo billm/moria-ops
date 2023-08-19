@@ -45,8 +45,8 @@ spec:
         port: 25
         from: "windmill@${SECRET_DOMAIN}"
         tls_implicit: false
-        smtp_username: null
-        smtp_password: null
+        username: null
+        password: null
     ingress:
       enabled: true
       className: internal
