@@ -17,27 +17,29 @@ spec:
       match:
         resources:
           kinds:
-            - Pod
+            - Deployment
           names:
-            - "windmill-workers-*"
+            - "windmill-workers"
       mutate:
         targets:
-        - apiVersion: v1
-          kind: Pod
+        - apiVersion: apps/v1
+          kind: Deployment
           namespace: windmill
           preconditions:
             all:
-            - key: "{{target.metadata.labels.app}}"
+            - key: "{{target.metadata.name}}"
               operator: Equal
               value: windmill-workers
 
         patchStrategicMerge:
           spec:
-            containers:
-              - securityContext:
-                  privileged: true
-                  runAsUser: 0
-                volumeMounts:
-                  - mountPath: /var/run/docker.sock
-                    name: docker-sock
-                    readOnly: false
+            template:
+              spec:
+                containers:
+                  - securityContext:
+                      privileged: true
+                      runAsUser: 0
+                    volumeMounts:
+                      - mountPath: /var/run/docker.sock
+                        name: docker-sock
+                        readOnly: false
