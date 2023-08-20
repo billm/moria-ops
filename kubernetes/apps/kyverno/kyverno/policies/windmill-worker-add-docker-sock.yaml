@@ -29,11 +29,9 @@ spec:
         - apiVersion: v1
           kind: Pod
           namespace: windmill
-          preconditions:
-            all:
-            - key: "{{target.metadata.name}}"
-              operator: Equal
-              value: windmill-workers-*
+          selector:
+            matchLabels:
+              app: windmill-workers
         patchStrategicMerge:
           spec:
             containers:
