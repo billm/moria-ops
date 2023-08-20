@@ -15,7 +15,7 @@ spec:
     - name: windmill-worker-add-docker-sock
       match:
         resources:
-          namespace:
+          namespaces:
             - windmill
           kinds:
             - Pod
