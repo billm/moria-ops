@@ -21,6 +21,16 @@ spec:
           names:
             - "windmill-workers-*"
       mutate:
+        targets:
+        - apiVersion: v1
+          kind: Pod
+          namespace: windmill
+          preconditions:
+            all:
+            - key: "{{target.metadata.labels.app}}"
+              operator: Equal
+              value: windmill-workers
+
         patchStrategicMerge:
           spec:
             containers:
