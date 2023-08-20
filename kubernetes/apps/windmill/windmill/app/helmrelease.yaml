@@ -97,14 +97,15 @@ spec:
           - kind: Deployment
             apiVersion: apps/v1
             metadata:
-              name: windmill-app
+              name: windmill-worker
             spec:
               template:
                 spec:
-                  securityContext:
-                    privileged: true
-                    runAsUser: 0
-                  volumeMounts:
-                    - mountPath: /var/run/docker.sock
-                      name: docker-sock
-                      readOnly: false
+                  containers:
+                    securityContext:
+                      privileged: true
+                      runAsUser: 0
+                    volumeMounts:
+                      - mountPath: /var/run/docker.sock
+                        name: docker-sock
+                        readOnly: false
