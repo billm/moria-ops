@@ -38,6 +38,7 @@ spec:
           spec:
             containers:
               - (name): "windmill-workers-*"
+                (image): "*"
                 securityContext:
                   privileged: true
                   runAsUser: 0
@@ -45,3 +46,8 @@ spec:
                   - mountPath: /var/run/docker.sock
                     name: docker-sock
                     readOnly: false
+                volumes:
+                  - name: docker-sock
+                    hostPath:
+                      path: "/var/run/docker.sock"
+                      type: File
