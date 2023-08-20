@@ -34,10 +34,10 @@ spec:
         patchStrategicMerge:
           spec:
             containers:
-              securityContext:
-                privileged: true
-                runAsUser: 0
-              volumeMounts:
-                - mountPath: /var/run/docker.sock
-                  name: docker-sock
-                  readOnly: false
+              - securityContext:
+                  privileged: true
+                  runAsUser: 0
+                volumeMounts:
+                  - mountPath: /var/run/docker.sock
+                    name: docker-sock
+                    readOnly: false
