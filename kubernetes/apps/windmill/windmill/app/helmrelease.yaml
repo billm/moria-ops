@@ -38,7 +38,7 @@ spec:
       appReplicas: 1
       workerReplicas: 1
       lspReplicas: 1
-      exposeHostDocker: true
+      exposeHostDocker: false # handle this as a patch windmill chart is broke
       workerGroups: []
       smtp:
         enabled: true
@@ -69,28 +69,42 @@ spec:
       valuesKey: WINDMILL_SMTP_PASSWORD
       targetPath: windmill.smtp.password
 
-  # postRenderers:
-  #   - kustomize:
-  #       patchesStrategicMerge:
-  #         - kind: Deployment
-  #           apiVersion: apps/v1
-  #           metadata:
-  #             name: windmill-app
-  #           spec:
-  #             template:
-  #               spec:
-  #                 volumes:
-  #                   - name: init-sql
-  #                     configMap:
-  #                       name: windmill-init-sql
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: windmill-app
+            spec:
+              template:
+                spec:
+                  volumes:
+                    - name: init-sql
+                      configMap:
+                        name: windmill-init-sql
 
-  #                 initContainers:
-  #                   - name: init-db
-  #                     image: ghcr.io/tomcranitch/postgres-initdb-with-sql:0.0.1@sha256:5511526d94123153cb09eaf7e9e8ab42ad80eda988fc40fb51956443bb334c00
-  #                     volumeMounts:
-  #                       - name: init-sql
-  #                         mountPath: /etc/init.sql
-  #                         subPath: init.sql
-  #                     envFrom:
-  #                       - secretRef:
-  #                           name: *secret
+                  initContainers:
+                    - name: init-db
+                      image: ghcr.io/tomcranitch/postgres-initdb-with-sql:0.0.1@sha256:5511526d94123153cb09eaf7e9e8ab42ad80eda988fc40fb51956443bb334c00
+                      volumeMounts:
+                        - name: init-sql
+                          mountPath: /etc/init.sql
+                          subPath: init.sql
+                      envFrom:
+                        - secretRef:
+                            name: *secret
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: windmill-app
+            spec:
+              template:
+                spec:
+                  securityContext:
+                    privileged: true
+                    runAsUser: 0
+                  volumeMounts:
+                    - mountPath: /var/run/docker.sock
+                      name: docker-sock
+                      readOnly: false
