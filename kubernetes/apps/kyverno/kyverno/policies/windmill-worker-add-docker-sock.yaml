@@ -41,7 +41,7 @@ spec:
               spec:
                 containers:
                   - name: windmill-workers
-                  - securityContext:
+                    securityContext:
                       privileged: true
                       runAsUser: 0
                     volumeMounts:
