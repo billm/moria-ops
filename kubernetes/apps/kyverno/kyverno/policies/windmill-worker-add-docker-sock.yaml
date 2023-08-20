@@ -32,14 +32,18 @@ spec:
               value: windmill-workers
 
         patchStrategicMerge:
-          spec:
-            template:
-              spec:
-                containers:
-                  - securityContext:
-                      privileged: true
-                      runAsUser: 0
-                    volumeMounts:
-                      - mountPath: /var/run/docker.sock
-                        name: docker-sock
-                        readOnly: false
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: windmill-workers
+            spec:
+              template:
+                spec:
+                  containers:
+                    - securityContext:
+                        privileged: true
+                        runAsUser: 0
+                      volumeMounts:
+                        - mountPath: /var/run/docker.sock
+                          name: docker-sock
+                          readOnly: false
