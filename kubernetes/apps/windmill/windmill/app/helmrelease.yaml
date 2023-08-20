@@ -56,18 +56,18 @@ spec:
       name: *secret
       valuesKey: WINDMILL_POSTGRES_URL
       targetPath: windmill.databaseUrl
-    - kind: Secret
-      name: *secret
-      valuesKey: WINDMILL_SMTP_HOST
-      targetPath: windmill.smtp.host
-    - kind: Secret
-      name: *secret
-      valuesKey: WINDMILL_SMTP_USER
-      targetPath: windmill.smtp.user
-    - kind: Secret
-      name: *secret
-      valuesKey: WINDMILL_SMTP_PASSWORD
-      targetPath: windmill.smtp.password
+    # - kind: Secret
+    #   name: *secret
+    #   valuesKey: WINDMILL_SMTP_HOST
+    #   targetPath: windmill.smtp.host
+    # - kind: Secret
+    #   name: *secret
+    #   valuesKey: WINDMILL_SMTP_USER
+    #   targetPath: windmill.smtp.user
+    # - kind: Secret
+    #   name: *secret
+    #   valuesKey: WINDMILL_SMTP_PASSWORD
+    #   targetPath: windmill.smtp.password
 
   postRenderers:
     - kustomize:
