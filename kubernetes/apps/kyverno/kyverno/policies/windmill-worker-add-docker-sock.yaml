@@ -8,43 +8,40 @@ metadata:
     policies.kyverno.io/subject: Pod
     policies.kyverno.io/description: >-
       Add docker-sock to Windmill worker pods
-    pod-policies.kyverno.io/autogen-controllers: none
+    pod-policies.kyverno.io/autogen-controllers: Deployment
 spec:
   mutateExistingOnPolicyUpdate: true
-  generateExistingOnPolicyUpdate: true
   rules:
     - name: windmill-worker-add-docker-sock
       match:
         resources:
+          namespace:
+            - windmill
           kinds:
-            - Deployment
-          names:
-            - "windmill-workers"
+            - Pod
+          selector:
+            matchLabels:
+              app: windmill-workers
+          operations:
+            - CREATE
       mutate:
         targets:
-        - apiVersion: apps/v1
-          kind: Deployment
+        - apiVersion: v1
+          kind: Pod
           namespace: windmill
           preconditions:
             all:
             - key: "{{target.metadata.name}}"
               operator: Equal
-              value: windmill-workers
-
+              value: windmill-workers-*
         patchStrategicMerge:
-          kind: Deployment
-          apiVersion: apps/v1
-          metadata:
-            name: windmill-workers
           spec:
-            template:
-              spec:
-                containers:
-                  - name: windmill-workers
-                    securityContext:
-                      privileged: true
-                      runAsUser: 0
-                    volumeMounts:
-                      - mountPath: /var/run/docker.sock
-                        name: docker-sock
-                        readOnly: false
+            containers:
+              - (name): "windmill-workers-*"
+                securityContext:
+                  privileged: true
+                  runAsUser: 0
+                volumeMounts:
+                  - mountPath: /var/run/docker.sock
+                    name: docker-sock
+                    readOnly: false
