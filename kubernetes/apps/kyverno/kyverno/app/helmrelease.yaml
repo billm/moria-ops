@@ -51,7 +51,7 @@ spec:
             - apiGroups:
                 - "apps/v1"
               resources:
-                - deployment
+                - deployments
               verbs:
                 - create
                 - update
