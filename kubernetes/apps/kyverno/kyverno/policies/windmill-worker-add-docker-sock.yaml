@@ -8,7 +8,7 @@ metadata:
     policies.kyverno.io/subject: Pod
     policies.kyverno.io/description: >-
       Add docker-sock to Windmill worker pods
-    pod-policies.kyverno.io/autogen-controllers: Deployment
+    pod-policies.kyverno.io/autogen-controllers: none
 spec:
   mutateExistingOnPolicyUpdate: true
   rules:
@@ -18,16 +18,17 @@ spec:
           namespaces:
             - windmill
           kinds:
-            - Pod
+            - Deployment
           selector:
             matchLabels:
               app: windmill-workers
           operations:
             - CREATE
+            - UPDATE
       mutate:
         targets:
-        - apiVersion: v1
-          kind: Pod
+        - apiVersion: apps/v1
+          kind: Deployment
           namespace: windmill
           preconditions:
             any:
@@ -36,18 +37,48 @@ spec:
               value: windmill-workers
         patchStrategicMerge:
           spec:
-            containers:
-            - (name): "windmill-worker"
-              (image): "*"
-              securityContext:
-                privileged: true
-                runAsUser: 0
-              volumeMounts:
-                - mountPath: /var/run/docker.sock
-                  name: docker-sock
-                  readOnly: false
-            volumes:
-            - name: docker-sock
-              hostPath:
-                path: "/var/run/docker.sock"
-                type: File
+            template:
+              spec:
+                containers:
+                - (name): "windmill-worker"
+                  (image): "*"
+                  securityContext:
+                    privileged: true
+                    runAsUser: 0
+                  volumeMounts:
+                  - mountPath: /var/run/docker.sock
+                    name: docker-sock
+                    readOnly: false
+                volumes:
+                - name: docker-sock
+                  hostPath:
+                    path: "/var/run/docker.sock"
+                    type: File
+
+      # mutate:
+      #   targets:
+      #   - apiVersion: v1
+      #     kind: Pod
+      #     namespace: windmill
+      #     preconditions:
+      #       any:
+      #       - key: "{{ request.object.metadata.labels.app }}"
+      #         operator: Equals
+      #         value: windmill-workers
+      #   patchStrategicMerge:
+      #     spec:
+      #       containers:
+      #       - (name): "windmill-worker"
+      #         (image): "*"
+      #         securityContext:
+      #           privileged: true
+      #           runAsUser: 0
+      #         volumeMounts:
+      #         - mountPath: /var/run/docker.sock
+      #           name: docker-sock
+      #           readOnly: false
+      #       volumes:
+      #       - name: docker-sock
+      #         hostPath:
+      #           path: "/var/run/docker.sock"
+      #           type: File
