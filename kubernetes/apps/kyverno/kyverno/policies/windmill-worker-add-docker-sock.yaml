@@ -37,7 +37,7 @@ spec:
         patchStrategicMerge:
           spec:
             containers:
-              - (name): "windmill-workers-*"
+              - (name): "windmill-worker"
                 (image): "*"
                 securityContext:
                   privileged: true
