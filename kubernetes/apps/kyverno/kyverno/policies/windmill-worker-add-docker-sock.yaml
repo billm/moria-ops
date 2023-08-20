@@ -22,14 +22,14 @@ spec:
             - "windmill-workers"
       mutate:
         targets:
-        - apiVersion: apps/v1
-          kind: Deployment
+        - apiVersion: v1
+          kind: Pod
           namespace: windmill
           preconditions:
             all:
             - key: "{{target.metadata.name}}"
               operator: Equal
-              value: windmill-workers
+              value: windmill-workers-*
 
         patchStrategicMerge:
           spec:
