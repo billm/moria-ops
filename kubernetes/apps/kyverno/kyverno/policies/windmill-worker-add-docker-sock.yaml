@@ -37,17 +37,17 @@ spec:
         patchStrategicMerge:
           spec:
             containers:
-              - (name): "windmill-worker"
-                (image): "*"
-                securityContext:
-                  privileged: true
-                  runAsUser: 0
-                volumeMounts:
-                  - mountPath: /var/run/docker.sock
-                    name: docker-sock
-                    readOnly: false
-                volumes:
-                  - name: docker-sock
-                    hostPath:
-                      path: "/var/run/docker.sock"
-                      type: File
+            - (name): "windmill-worker"
+              (image): "*"
+              securityContext:
+                privileged: true
+                runAsUser: 0
+              volumeMounts:
+                - mountPath: /var/run/docker.sock
+                  name: docker-sock
+                  readOnly: false
+            volumes:
+            - name: docker-sock
+              hostPath:
+                path: "/var/run/docker.sock"
+                type: File
