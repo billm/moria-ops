@@ -30,10 +30,10 @@ spec:
       darkTheme: espresso
       alwaysTargetBlank: true
       showGreeting: false
-      showAppGroups: false
+      showAppGroups: true
       showAppStatus: false
-      showBookmarkGroups: false
-      showGlobalBookmarks: false
+      showBookmarkGroups: true
+      showGlobalBookmarks: true
       showAppUrls: false
       defaultEnable: true
       namespaceSelector:
@@ -45,6 +45,15 @@ spec:
           - networking
           - security
           - storage
+      globalBookmarks:
+        - group: k8s-at-home
+          bookmarks:
+            - name: k8s-at-home search
+              url: https://nanne.dev/k8s-at-home-search/
+            - name: k8s-at-home flux cluster template
+              url: https://github.com/onedr0p/flux-cluster-template
+            - name: k8s-at-home search
+              url: https://nanne.dev/k8s-at-home-search/
     ingress:
       main:
         enabled: true
