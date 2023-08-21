@@ -9,6 +9,10 @@ metadata:
 spec:
   instances: 3
   primaryUpdateStrategy: unsupervised
+  affinity:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+
   storage:
     size: 10Gi
     storageClass: longhorn
