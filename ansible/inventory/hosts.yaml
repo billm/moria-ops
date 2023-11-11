@@ -17,9 +17,6 @@ kubernetes:
         dwarf4:
           ansible_user: billm
           ansible_host: 192.168.134.14
-        dwarf5:
-          ansible_user: billm
-          ansible_host: 192.168.134.15
 storage:
   hosts:
     dwarf1:
