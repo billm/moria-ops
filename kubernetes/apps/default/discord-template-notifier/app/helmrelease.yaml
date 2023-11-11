@@ -27,9 +27,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    service:
-      main: &disableSvc
-        enabled: false
     controllers:
       main:
         containers:
@@ -40,20 +37,26 @@ spec:
             env:
               TZ: "${TIMEZONE}"
             probes:
-              liveness: *disableSvc
-              readiness: *disableSvc
-              startup: *disableSvc
+              liveness: &disabled
+                enabled: false
+              readiness: *disabled
+              startup: *disabled
             resources:
               requests:
-                cpu: 15m
-                memory: 110M
+                cpu: 5m
+                memory: 10M
               limits:
-                cpu: 15m
-                memory: 110M
+                memory: 64M
+    service:
+      main: *disabled
     ingress:
-      main: *disableSvc
+      main: *disabled
     persistence:
       data:
         enabled: true
         type: secret
         name: discord-template-notifier-secret
+        globalMounts:
+          - path: /data/config.toml
+            subPath: config.toml
+            readOnly: true
