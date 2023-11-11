@@ -17,32 +17,38 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      replicas: 1
-      strategy: Recreate
-      annotations:
-        reloader.stakater.com/auto: "true"
-
-    image:
-      repository: ghcr.io/lldap/lldap
-      # TODO: Switch to release tag on next release
-      tag: latest-alpine@sha256:d8fb642f2f1134c41ed1655fce0e6b48234d02522d1918b5f37254a1281f4c6f
-
-    env:
-      LLDAP_VERBOSE: "true"
-      LLDAP_HTTP_URL: "https://ldap.${SECRET_DOMAIN}"
-      LLDAP_HTTP_PORT: &port 80
-      LLDAP_LDAP_PORT: &ldapPort 389
-      LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: "true"
-      LLDAP_SMTP_OPTIONS__SERVER: "mail-relay.networking.svc.cluster.local"
-      LLDAP_SMTP_OPTIONS__PORT: "25"
-      LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: "NONE"
-      LLDAP_SMTP_OPTIONS__FROM: "Infrastructure <infrastructure@${SECRET_DOMAIN}>"
-      LLDAP_SMTP_OPTIONS__REPLY_TO: "Do not reply <noreply@${SECRET_DOMAIN}>"
-
-    envFrom:
-      - secretRef:
-          name: lldap-secrets
+    controllers:
+      main:
+        replicas: 1
+        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/lldap/lldap
+              # TODO: Switch to release tag on next release
+              tag: latest-alpine@sha256:d8fb642f2f1134c41ed1655fce0e6b48234d02522d1918b5f37254a1281f4c6f
+            env:
+              LLDAP_VERBOSE: "true"
+              LLDAP_HTTP_URL: "https://ldap.${SECRET_DOMAIN}"
+              LLDAP_HTTP_PORT: &port 80
+              LLDAP_LDAP_PORT: &ldapPort 389
+              LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: "true"
+              LLDAP_SMTP_OPTIONS__SERVER: "mail-relay.networking.svc.cluster.local"
+              LLDAP_SMTP_OPTIONS__PORT: "25"
+              LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: "NONE"
+              LLDAP_SMTP_OPTIONS__FROM: "Infrastructure <infrastructure@${SECRET_DOMAIN}>"
+              LLDAP_SMTP_OPTIONS__REPLY_TO: "Do not reply <noreply@${SECRET_DOMAIN}>"
+            envFrom:
+              - secretRef:
+                  name: lldap-secrets
+            resources:
+              requests:
+                cpu: 5m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
 
     service:
       main:
@@ -56,7 +62,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "internal"
+        className: "internal"
         annotations:
           hajimari.io/icon: icon-park-twotone:data-user
         hosts:
@@ -71,12 +77,6 @@ spec:
     persistence:
       data:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         existingClaim: data-lldap
 
-    resources:
-      requests:
-        cpu: 5m
-        memory: 128Mi
-      limits:
-        memory: 512Mi
