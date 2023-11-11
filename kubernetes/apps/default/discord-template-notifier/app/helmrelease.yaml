@@ -27,29 +27,33 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/morphy2k/rss-forwarder
-      tag: 0.6.1
-    env:
-      TZ: "${TIMEZONE}"
     service:
       main: &disableSvc
         enabled: false
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/morphy2k/rss-forwarder
+              tag: 0.6.1
+            env:
+              TZ: "${TIMEZONE}"
+            probes:
+              liveness: *disableSvc
+              readiness: *disableSvc
+              startup: *disableSvc
+            resources:
+              requests:
+                cpu: 15m
+                memory: 110M
+              limits:
+                cpu: 15m
+                memory: 110M
     ingress:
       main: *disableSvc
-    probes:
-      liveness: *disableSvc
-      readiness: *disableSvc
-      startup: *disableSvc
     persistence:
       data:
         enabled: true
         type: secret
         name: discord-template-notifier-secret
-    resources:
-      requests:
-        cpu: 15m
-        memory: 110M
-      limits:
-        cpu: 15m
-        memory: 110M
