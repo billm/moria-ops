@@ -67,8 +67,6 @@ spec:
     longhornConversionWebhook:
       replicas: 0
     longhornUI:
-      nodeSelector:
-        kubernetes.io/arch: arm64
       tolerations:
         - key: "node.kubernetes.io/unreachable"
           operator: "Exists"
