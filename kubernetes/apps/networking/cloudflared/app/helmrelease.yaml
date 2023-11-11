@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: cloudflared
+  name: &app cloudflared
   namespace: networking
 spec:
   interval: 30m
@@ -36,7 +36,6 @@ spec:
             image:
               repository: docker.io/cloudflare/cloudflared
               tag: 2023.10.0
-              pullPolicy: IfNotPresent
             probes:
               liveness: &probes
                 enabled: true
@@ -44,7 +43,7 @@ spec:
                 spec:
                   httpGet:
                     path: /ready
-                    port: http
+                    port: &port 8080
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -74,14 +73,11 @@ spec:
                 memory: 10Mi
               limits:
                 memory: 256Mi
-
-
-
     service:
       main:
         ports:
           http:
-            port: 8080
+            port: *port
     serviceMonitor:
       main:
         enabled: true
