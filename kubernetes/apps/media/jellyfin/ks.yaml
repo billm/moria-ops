@@ -5,6 +5,8 @@ metadata:
   name: cluster-apps-jellyfin
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cluster-apps-amd-device-plugin
   path: ./kubernetes/apps/media/jellyfin/app
   prune: true
   sourceRef:

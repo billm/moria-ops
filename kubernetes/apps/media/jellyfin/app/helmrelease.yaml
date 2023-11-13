@@ -15,12 +15,27 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: amd-device-plugin
+      namespace: kube-system
   values:
     defaultPodOptions:
       hostNetwork: true
     controllers:
       main:
+        type: statefulset
+        annotations:
+          reloader.stakater.com/auto: "true"
         containers:
           main:
             image:
@@ -32,11 +47,43 @@ spec:
               JELLYFIN_CONFIG_DIR: /jellyfin/config
               JELLYFIN_CACHE_DIR: /jellyfin/cache
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
-            # resources:
-            #   requests:
-            #     nvidia.com/gpu: 1
-            #   limits:
-            #     nvidia.com/gpu: 1
+            resources:
+              requests:
+                amd.com/gpu: 1
+                cpu: 1500m
+                memory: 2Gi
+              limits:
+                amd.com/gpu: 1
+                memory: 10Gi
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8096
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+        pod:
+          nodeSelector:
+            amd.feature.node.kubernetes.io/gpu: "true"
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups: [44, 105, 10000]
+    service:
+      main:
+        ports:
+          http:
+            port: *port
     ingress:
       main:
         enabled: true
@@ -54,14 +101,10 @@ spec:
                 pathType: Prefix
                 service:
                   name: main
+                  port: http
         tls:
           - hosts:
               - *host
-    service:
-      main:
-        ports:
-          http:
-            port: 8096
     persistence:
       data:
         enabled: true
