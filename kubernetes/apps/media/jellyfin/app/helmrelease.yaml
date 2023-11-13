@@ -47,6 +47,8 @@ spec:
               JELLYFIN_CONFIG_DIR: /config/config
               JELLYFIN_CACHE_DIR: /config/cache
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+              JELLYFIN_PublishedServerUrl: https://jellyfin.${SECRET_DOMAIN}
+              JELLYFIN_PublishedServerName: jellyfin
             resources:
               requests:
                 amd.com/gpu: 1
