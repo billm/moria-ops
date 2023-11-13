@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: jellyfin
+  name: &app jellyfin
   namespace: media
 spec:
   interval: 15m
@@ -10,11 +10,12 @@ spec:
     spec:
       chart: app-template
       version: 2.2.0
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: bjw-s
         namespace: flux-system
-      interval: 15m
+
   values:
     defaultPodOptions:
       hostNetwork: true
@@ -24,7 +25,7 @@ spec:
           main:
             image:
               repository: jellyfin/jellyfin
-              tag: latest
+              tag: 10.8.12
             env:
               TZ: "America/New_York"
               JELLYFIN_CACHE_DIR: /config/cache
