@@ -28,7 +28,9 @@ spec:
               tag: 10.8.12
             env:
               TZ: "America/New_York"
-              JELLYFIN_CACHE_DIR: /config/cache
+              JELLYFIN_DATA_DIR: /jellyfin
+              JELLYFIN_CONFIG_DIR: /jellyfin/config
+              JELLYFIN_CACHE_DIR: /jellyfin/cache
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
             # resources:
             #   requests:
@@ -61,16 +63,28 @@ spec:
           http:
             port: 8096
     persistence:
+      data:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: jellyfin-data
+        globalMounts:
+          - path: /jellyfin
+      cache:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: jellyfin-cache
+        globalMounts:
+          - path: /jellyfin/cache
       config:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: jellyfin-config
         globalMounts:
-          - path: /config
+          - path: /jellyfin/config
       transcode:
         type: emptyDir
         globalMounts:
-          - path: /transcode
+          - path: /jellyfin/transcode
       movies:
         enabled: true
         type: persistentVolumeClaim
