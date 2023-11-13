@@ -1,0 +1,84 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    defaultPodOptions:
+      hostNetwork: true
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: jellyfin/jellyfin
+              tag: latest
+            env:
+              TZ: "America/New_York"
+              JELLYFIN_CACHE_DIR: /config/cache
+              DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+            # resources:
+            #   requests:
+            #     nvidia.com/gpu: 1
+            #   limits:
+            #     nvidia.com/gpu: 1
+    ingress:
+      main:
+        enabled: true
+        className: "internal"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Jellyfin"
+          hajimari.io/info: "Media library"
+          hajimari.io/icon: "play-network"
+          hajimari.io/targetBlank: "true"
+        hosts:
+          - host: &host "jellyfin.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: main
+        tls:
+          - hosts:
+              - *host
+    service:
+      main:
+        ports:
+          http:
+            port: 8096
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: jellyfin-config
+        globalMounts:
+          - path: /config
+      transcode:
+        type: emptyDir
+        globalMounts:
+          - path: /transcode
+      movies:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: movies
+        globalMounts:
+          - path: /media/movies
+      movies-unvalidated:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: movies-unvalidated
+        globalMounts:
+          - path: /media/movies-unvalidated
