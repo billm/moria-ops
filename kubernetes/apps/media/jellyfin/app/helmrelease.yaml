@@ -28,21 +28,29 @@ spec:
   dependsOn:
     - name: amd-device-plugin
       namespace: kube-system
+    - name: longhorn
+      namespace: storage
   values:
-    defaultPodOptions:
-      hostNetwork: true
     controllers:
       main:
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 20Gi
+              storageClass: longhorn
+              globalMounts:
+                - path: /config
         containers:
           main:
             image:
               repository: jellyfin/jellyfin
               tag: 10.8.12
             env:
-              TZ: "America/New_York"
+              TZ: ${TIMEZONE}
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
               JELLYFIN_FFmpeg__probesize: 500M
               JELLYFIN_FFmpeg__analyzeduration: 250M
@@ -72,6 +80,7 @@ spec:
               startup:
                 enabled: false
         pod:
+          enableServiceLinks: false
           nodeSelector:
             amd.feature.node.kubernetes.io/gpu: "true"
           securityContext:
@@ -85,14 +94,14 @@ spec:
         type: LoadBalancer
         externalIPs:
           - ${JELLYFIN_IP}
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
         ports:
           http:
             port: *port
     ingress:
       main:
         enabled: true
-        className: "internal"
+        className: internal
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Jellyfin"
@@ -111,14 +120,16 @@ spec:
           - hosts:
               - *host
     persistence:
-      config:
-        enabled: true
-        existingClaim: jellyfin-config
       transcode:
         enabled: true
         type: emptyDir
         globalMounts:
           - path: /transcode
+      cache:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /cache
       movies:
         enabled: true
         type: persistentVolumeClaim
