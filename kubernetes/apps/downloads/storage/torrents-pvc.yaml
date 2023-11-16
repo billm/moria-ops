@@ -27,7 +27,7 @@ metadata:
   namespace: downloads
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: media
+  storageClassName: downloads
   resources:
     requests:
       storage: 1Mi # Size does not matter ...twss
