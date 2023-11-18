@@ -91,11 +91,15 @@ spec:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: movies
-        globalMounts:
-          - path: /media/movies
+        advancedMounts:
+          main:
+            main::
+              - path: /media/movies
       movies-unvalidated:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: movies-unvalidated
-        globalMounts:
-          - path: /media/movies-unvalidated
+        advancedMounts:
+          main:
+            main::
+              - path: /media/movies-unvalidated
