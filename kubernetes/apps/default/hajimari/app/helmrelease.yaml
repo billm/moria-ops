@@ -40,7 +40,9 @@ spec:
         matchNames:
           - database
           - default
+          - downloads
           - kube-system
+          - media
           - monitoring
           - networking
           - security
@@ -52,8 +54,6 @@ spec:
               url: https://nanne.dev/k8s-at-home-search/
             - name: k8s-at-home flux cluster template
               url: https://github.com/onedr0p/flux-cluster-template
-            - name: k8s-at-home search
-              url: https://nanne.dev/k8s-at-home-search/
     ingress:
       main:
         enabled: true
