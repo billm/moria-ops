@@ -6,3 +6,6 @@ namespace: downloads
 resources:
   - ./storageclass.yaml
   - ./torrents-pvc.yaml
+# Media mounts
+  - ./movies-pvc.yaml
+  - ./movies-unvalidated-pvc.yaml
