@@ -134,7 +134,7 @@ spec:
               - path: /scripts
                 readOnly: true
       torrents:
-        existingClaim: torrents
+        existingClaim: downloads-torrents
         advancedMounts:
           main:
             main:

@@ -82,23 +82,19 @@ spec:
         enabled: true
         existingClaim: sonarr-config
       torrents:
-        existingClaim: torrents
+        existingClaim: downloads-torrents
         advancedMounts:
           main:
             main:
               - path: /data/torrents
       movies:
-        enabled: true
-        type: persistentVolumeClaim
-        existingClaim: movies
+        existingClaim: downloads-movies
         advancedMounts:
           main:
             main::
               - path: /media/movies
       movies-unvalidated:
-        enabled: true
-        type: persistentVolumeClaim
-        existingClaim: movies-unvalidated
+        existingClaim: downloads-movies-unvalidated
         advancedMounts:
           main:
             main::

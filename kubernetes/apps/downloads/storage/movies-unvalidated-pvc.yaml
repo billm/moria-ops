@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: movies-unvalidated
+  name: downloads-movies-unvalidated
 spec:
   storageClassName: downloads
   capacity:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: movies-unvalidated
+  name: downloads-movies-unvalidated
   namespace: downloads
 spec:
   accessModes: ["ReadWriteMany"]
