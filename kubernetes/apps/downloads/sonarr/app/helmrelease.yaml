@@ -83,19 +83,13 @@ spec:
         existingClaim: sonarr-config
       torrents:
         existingClaim: downloads-torrents
-        advancedMounts:
-          main:
-            main:
-              - path: /data/torrents
+        globalMounts:
+          - path: /data/torrents
       movies:
         existingClaim: downloads-movies
-        advancedMounts:
-          main:
-            main::
-              - path: /media/movies
+        globalMounts:
+          - path: /data/movies
       movies-unvalidated:
         existingClaim: downloads-movies-unvalidated
-        advancedMounts:
-          main:
-            main::
-              - path: /media/movies-unvalidated
+        globalMounts:
+          - path: /data/movies-unvalidated
