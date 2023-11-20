@@ -48,10 +48,22 @@ spec:
           - security
           - storage
       globalBookmarks:
+        - group: PiHole
+          bookmarks:
+            - name: cesium
+              url: http://cesium.${SECRET_DOMAIN}/admin
+            - name: thorium
+              url: http://thorium.${SECRET_DOMAIN}/admin
+        - group: TrueNAS SCALE
+          bookmarks:
+            - name: tmi
+              url: https://tmi.${SECRET_DOMAIN}
+            - name: deuterium
+              url: https://deuterium.${SECRET_DOMAIN}
         - group: k8s-at-home
           bookmarks:
             - name: k8s-at-home search
-              url: https://nanne.dev/k8s-at-home-search/
+              url: https://kubesearch.dev/
             - name: k8s-at-home flux cluster template
               url: https://github.com/onedr0p/flux-cluster-template
     ingress:
