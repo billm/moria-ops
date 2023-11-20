@@ -26,6 +26,7 @@ metadata:
   name: media-movies
   namespace: media
 spec:
+  volumeName: media-movies
   accessModes: ["ReadWriteMany"]
   storageClassName: media
   resources:

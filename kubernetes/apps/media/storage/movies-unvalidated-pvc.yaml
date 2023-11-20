@@ -26,6 +26,7 @@ metadata:
   name: media-movies-unvalidated
   namespace: media
 spec:
+  volumeName: media-movies-unvalidated
   accessModes: ["ReadWriteMany"]
   storageClassName: media
   resources:

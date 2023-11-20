@@ -26,6 +26,7 @@ metadata:
   name: downloads-torrents
   namespace: downloads
 spec:
+  volumeName: downloads-torrents
   accessModes: ["ReadWriteMany"]
   storageClassName: downloads
   resources:

@@ -26,6 +26,7 @@ metadata:
   name: downloads-movies-unvalidated
   namespace: downloads
 spec:
+  volumeName: downloads-movies-unvalidated
   accessModes: ["ReadWriteMany"]
   storageClassName: downloads
   resources:

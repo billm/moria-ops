@@ -26,6 +26,7 @@ metadata:
   name: media-shows
   namespace: downloads
 spec:
+  volumeName: media-shows
   accessModes: ["ReadWriteMany"]
   storageClassName: media
   resources:
