@@ -134,12 +134,16 @@ spec:
       movies:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: movies
+        existingClaim: media-movies
         globalMounts:
-          - path: /media/movies
+          - path: /data/movies
       movies-unvalidated:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: movies-unvalidated
+        existingClaim: media-movies-unvalidated
         globalMounts:
-          - path: /media/movies-unvalidated
+          - path: /data/movies-unvalidated
+      shows:
+        existingClaim: media-shows
+        globalMounts:
+          - path: /data/shows

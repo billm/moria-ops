@@ -7,5 +7,5 @@ resources:
   - ./storageclass.yaml
   - ./movies-pvc.yaml
   - ./movies-unvalidated-pvc.yaml
-  # - ./shows-pvc.yaml
+  - ./shows-pvc.yaml
   # - ./music-pvc.yaml

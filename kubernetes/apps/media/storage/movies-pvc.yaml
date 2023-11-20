@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: movies
+  name: media-movies
 spec:
   storageClassName: media
   capacity:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: movies
+  name: media-movies
   namespace: media
 spec:
   accessModes: ["ReadWriteMany"]
