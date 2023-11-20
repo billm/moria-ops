@@ -86,6 +86,6 @@ spec:
         globalMounts:
           - path: /data/torrents
     media:
-        existingClaim: downloads-media
+        existingClaim: downloads-movies
         globalMounts:
           - path: /data/movies
