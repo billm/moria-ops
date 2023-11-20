@@ -66,6 +66,8 @@ spec:
               url: https://kubesearch.dev/
             - name: k8s-at-home flux cluster template
               url: https://github.com/onedr0p/flux-cluster-template
+            - name: moria-ops repo
+              url: https://github.com/billm/moria-ops
     ingress:
       main:
         enabled: true
