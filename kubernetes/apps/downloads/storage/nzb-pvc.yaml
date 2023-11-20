@@ -1,0 +1,34 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: downloads-nzb
+spec:
+  storageClassName: downloads
+  capacity:
+    storage: 1Mi # Size does not matter ...twss
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: ${SECRET_NFS_SERVER_IP_ADDRESS}
+    path: /mnt/tank/torrents
+  mountOptions:
+    - nfsvers=4.2
+    - nconnect=8
+    - hard
+    - noatime
+    - rsize=131072
+    - wsize=131072
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-nzb
+  namespace: downloads
+spec:
+  volumeName: downloads-nzb
+  accessModes: ["ReadWriteMany"]
+  storageClassName: downloads
+  resources:
+    requests:
+      storage: 1Mi # Size does not matter ...twss
