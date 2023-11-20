@@ -13,4 +13,7 @@ spec:
     kind: GitRepository
     name: home-kubernetes
   wait: false
-kubernetes/apps/downloads/sonarr/ks.yaml
+  dependsOn:
+    - name: storage-longhorn
+    - name: security-external-secrets-stores
+
