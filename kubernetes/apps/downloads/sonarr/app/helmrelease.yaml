@@ -85,11 +85,7 @@ spec:
         existingClaim: downloads-torrents
         globalMounts:
           - path: /data/torrents
-      movies:
-        existingClaim: downloads-movies
+      shows:
+        existingClaim: downloads-shows
         globalMounts:
-          - path: /data/movies
-      movies-unvalidated:
-        existingClaim: downloads-movies-unvalidated
-        globalMounts:
-          - path: /data/movies-unvalidated
+          - path: /data/shows

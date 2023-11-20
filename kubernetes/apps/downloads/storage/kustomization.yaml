@@ -9,3 +9,4 @@ resources:
 # Media mounts
   - ./movies-pvc.yaml
   - ./movies-unvalidated-pvc.yaml
+  - ./shows-pvc.yaml
