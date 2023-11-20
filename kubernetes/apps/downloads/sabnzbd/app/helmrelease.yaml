@@ -72,7 +72,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "internal-nginx"
+        className: "internal"
         hosts:
           - host: &host "sabnzbd.${SECRET_DOMAIN}"
             paths:
