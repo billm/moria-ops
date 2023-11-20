@@ -7,4 +7,5 @@ resources:
   - storage
   # Post Flux-Kustomizations
   - ./qbittorrent/ks.yaml
+  - ./radarr/ks.yaml
   - ./sonarr/ks.yaml
