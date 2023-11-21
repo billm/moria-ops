@@ -6,6 +6,7 @@ resources:
   - ./namespace.yaml
   - storage
   # Post Flux-Kustomizations
+  - ./jellyseerr/ks.yaml
   - ./qbittorrent/ks.yaml
   - ./prowlarr/ks.yaml
   - ./radarr/ks.yaml
