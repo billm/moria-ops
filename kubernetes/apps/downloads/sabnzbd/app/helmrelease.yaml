@@ -92,7 +92,7 @@ spec:
           main:
             main:
               - path: /config
-      media:
+      nzb:
         existingClaim: downloads-nzb
         globalMounts:
           - path: /data/nzb

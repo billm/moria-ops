@@ -85,7 +85,11 @@ spec:
         existingClaim: downloads-torrents
         globalMounts:
           - path: /data/torrents
-      media:
+      nzb:
+        existingClaim: downloads-nzb
+        globalMounts:
+          - path: /data/nzb
+      movies:
           existingClaim: downloads-movies
           globalMounts:
             - path: /data/movies

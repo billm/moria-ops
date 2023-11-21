@@ -85,6 +85,10 @@ spec:
         existingClaim: downloads-torrents
         globalMounts:
           - path: /data/torrents
+      nzb:
+        existingClaim: downloads-nzb
+        globalMounts:
+          - path: /data/nzb
       shows:
         existingClaim: downloads-shows
         globalMounts:
