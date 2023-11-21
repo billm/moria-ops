@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: ${SECRET_NFS_SERVER_IP_ADDRESS}
-    path: /mnt/tank/torrents
+    path: /mnt/tank/nzb
   mountOptions:
     - nfsvers=4.2
     - nconnect=8
