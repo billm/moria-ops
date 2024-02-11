@@ -48,7 +48,7 @@ spec:
           main:
             image:
               repository: jellyfin/jellyfin
-              tag: 20231113.6-unstable
+              tag: 20240207.5-unstable
               # tag: 10.8.12
             env:
               TZ: ${TIMEZONE}
