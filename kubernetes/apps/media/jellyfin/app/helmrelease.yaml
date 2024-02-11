@@ -47,9 +47,12 @@ spec:
         containers:
           main:
             image:
-              repository: jellyfin/jellyfin
-              tag: 20240207.5-unstable
+              #repository: jellyfin/jellyfin
+              #tag: 20240207.5-unstable
               # tag: 10.8.12
+              repository: hotio/jellyfin
+              tag: release-d238b0d
+              
             env:
               TZ: ${TIMEZONE}
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
