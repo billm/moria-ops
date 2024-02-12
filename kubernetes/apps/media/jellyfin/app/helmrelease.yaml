@@ -60,6 +60,8 @@ spec:
               JELLYFIN_FFmpeg__analyzeduration: 250M
               JELLYFIN_PublishedServerUrl: https://jellyfin.${SECRET_DOMAIN}
               JELLYFIN_PublishedServerName: jellyfin
+              PUID: 568
+              PGID: 568
             resources:
               requests:
                 amd.com/gpu: 1
