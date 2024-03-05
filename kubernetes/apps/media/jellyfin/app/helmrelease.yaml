@@ -51,7 +51,7 @@ spec:
               #tag: 20240207.5-unstable
               # tag: 10.8.12
               repository: linuxserver/jellyfin
-              tag: nightly-version-20231115.15-unstable@sha256:55f41849753a4e4cee351d1d7d3a6dd015fef792f4d67d6b96f2bdbd0a2bf439
+              tag: nightly-version-20231115.15-unstable@sha256:4b82b5cabacac58cd990e98f150c3fa692941bbba346f2453166e2bebca94538
               
             env:
               TZ: ${TIMEZONE}
