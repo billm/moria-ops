@@ -58,7 +58,7 @@ spec:
           gluetun:
             image:
               repository: ghcr.io/qdm12/gluetun
-              tag: latest@sha256:cc08cc99c37a434f49619811ef35e3b6832522828ca17f92d9de479de848c720
+              tag: latest@sha256:be03a514f4e064421e25988e59b8edb38b05316bb8c7995e123393e28123fbdb
             env:
               - name: VPN_SERVICE_PROVIDER
                 value: "private internet access"
