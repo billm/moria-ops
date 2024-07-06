@@ -1,0 +1,24 @@
+tailscale_authkey: ENC[AES256_GCM,data:Ng4IBbkjD5j5+Z8RLrEapKxWb+xVJG6hYyTCPtnqwsqiOaAlFAKtPzhrP+ZbCOdZGkyn5rHFaDfUsQ4uuG8=,iv:29c1J4kPbQ6uNZI1VPNpcFDhIkfu+Ck3k2O4uRzzWow=,tag:WLL4a8CxQDUkZxbWkq8/gA==,type:str]
+nut_server: ENC[AES256_GCM,data:azv2QX8bxnPqS06VrA==,iv:YwNaeFxfaS3c2zk/oOWg/ps5GUqoFn+B0B91wuxN7qM=,tag:9zIEIb8z+X6obN7R52k6Pw==,type:str]
+nut_user: ENC[AES256_GCM,data:JKJzRGnCUw==,iv:X/XHPfFWpsqpSsnwSkYUH2Laa3mg68/8O7KM5+k9+m4=,tag:FvaqKbaD7inO5+gxpLY1ng==,type:str]
+nut_password: ENC[AES256_GCM,data:GakFZXWP,iv:Ccu8f4NnJmX0zL61QGHH9+MDhyUM3C0+Rzwj+8mqQ90=,tag:eF/0kVKwiUtBz4ZJ9JV8gg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1xgdtxuz0c6636aqzejt63kr0p8rutp6m0e6nmagnufc6mj5l0akqtqa2v5
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA0cy9tUXZxQ3VQU0t5NCtN
+            SW03T1B4OERSUnNYNVN5TisrT1JRL01QWUJnCmVnazlpQTdWTjFvdDZPNkYyTDZD
+            RmVSbStMWURET3M4V2VaVlMza0R6TU0KLS0tIDlMM3RxZU5ONHFCMmxtZld6VFpi
+            ams4eElIbnBDMC94ajRmV0NMUE1zWWsKOpuzS3UQxQnuKKiqWl0NHrLHRRDo5Amf
+            e+23ORbWzsKam89zgwFTdM67qvCVQq+OJHN2Kr7SaqJwKWhqNS4JTg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-07-05T03:01:43Z"
+    mac: ENC[AES256_GCM,data:54eVGvji2hd/Mv/MH7jfGKcMvFYkAL7kpFApma/uGC3rJiA0OctAqqbQzLYTbjmJ+rKRRQ5FX9f/0sGZpVip2H8JaQX4WGuivMgg/ChTUXLR5oTwmFFwR8LvAThUQTlfKBTRubyykT0FBHBm8pGmCRgxVY6+J8uSbaD/Ul4SDAo=,iv:0NCEiLUGkN5hOERGkQFJNxTh2BZQvH/r0GZfhv2gm90=,tag:lE10ySCsibVQOogXLlnbVw==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.8.1

@@ -1,0 +1,9 @@
+machine:
+  network:
+    interfaces:
+      - deviceSelector:
+          hardwareAddr: 7c:83:34:b8:e1:51
+        addresses:
+          - 192.168.133.12/24
+        mtu: 1500
+        dhcp: false

@@ -1,0 +1,205 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+---
+# renovate: datasource=docker depName=ghcr.io/siderolabs/installer
+talosVersion: v1.7.5
+# renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
+kubernetesVersion: v1.30.2
+
+clusterName: "moria"
+endpoint: https://192.168.134.10:6443
+clusterPodNets:
+  - "10.69.0.0/16"
+clusterSvcNets:
+  - "10.96.0.0/16"
+additionalApiServerCertSans: &sans
+  - "192.168.134.10"
+  - 127.0.0.1 # KubePrism
+  - "kubernetes.ucsecurity.com"
+  - "kubernetes.atomz.one"
+additionalMachineCertSans: *sans
+
+# Disable built-in Flannel to use Cilium
+cniConfig:
+  name: none
+
+nodes:
+  - hostname: "neon"
+    ipAddress: "192.168.134.11"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/7c0a33081e0d1d96d1a4ec126c4f9277bd6ad18a7348fcb0c226476f68615f1c
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "7c:83:34:b9:28:e0"
+        dhcp: false
+        addresses:
+          - "192.168.134.11/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.134.1"
+        mtu: 1500
+        vip:
+          ip: "192.168.134.10"
+    extensionServices:
+      - name: tailscale
+        configFiles:
+        environment:
+          - TS_AUTHKEY=${tailscale_authkey}
+      - name: nut-client
+        configFiles:
+          - content: |-
+              MONITOR ${nut_server} 1 ${nut_user} ${nut_password} secondary
+              SHUTDOWNCMD "/sbin/poweroff"
+            mountPath: /usr/local/etc/nut/upsmon.conf
+    patches:
+      - "@./patches/neon/network.yaml"
+  - hostname: "argon"
+    ipAddress: "192.168.134.12"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/7c0a33081e0d1d96d1a4ec126c4f9277bd6ad18a7348fcb0c226476f68615f1c
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "7c:83:34:b8:e1:50"
+        dhcp: false
+        addresses:
+          - "192.168.134.12/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.134.1"
+        mtu: 1500
+        vip:
+          ip: "192.168.134.10"
+    extensionServices:
+      - name: tailscale
+        configFiles:
+        environment:
+          - TS_AUTHKEY=${tailscale_authkey}
+      - name: nut-client
+        configFiles:
+          - content: |-
+              MONITOR ${nut_server} 1 ${nut_user} ${nut_password} secondary
+              SHUTDOWNCMD "/sbin/poweroff"
+            mountPath: /usr/local/etc/nut/upsmon.conf
+    patches:
+      - "@./patches/argon/network.yaml"
+  - hostname: "krypton"
+    ipAddress: "192.168.134.13"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/7c0a33081e0d1d96d1a4ec126c4f9277bd6ad18a7348fcb0c226476f68615f1c
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "7c:83:34:b9:c6:c5"
+        dhcp: false
+        addresses:
+          - "192.168.134.13/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.134.1"
+        mtu: 1500
+        vip:
+          ip: "192.168.134.10"
+    extensionServices:
+      - name: tailscale
+        configFiles:
+        environment:
+          - TS_AUTHKEY=${tailscale_authkey}
+      - name: nut-client
+        configFiles:
+          - content: |-
+              MONITOR ${nut_server} 1 ${nut_user} ${nut_password} secondary
+              SHUTDOWNCMD "/sbin/poweroff"
+            mountPath: /usr/local/etc/nut/upsmon.conf
+    patches:
+      - "@./patches/krypton/network.yaml"
+  - hostname: "xenon"
+    ipAddress: "192.168.134.14"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/7c0a33081e0d1d96d1a4ec126c4f9277bd6ad18a7348fcb0c226476f68615f1c
+    controlPlane: false
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "70:70:fc:03:84:66"
+        dhcp: false
+        addresses:
+          - "192.168.134.14/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.134.1"
+        mtu: 1500
+    extensionServices:
+      - name: tailscale
+        configFiles:
+        environment:
+          - TS_AUTHKEY=${tailscale_authkey}
+      - name: nut-client
+        configFiles:
+          - content: |-
+              MONITOR ${nut_server} 1 ${nut_user} ${nut_password} secondary
+              SHUTDOWNCMD "/sbin/poweroff"
+            mountPath: /usr/local/etc/nut/upsmon.conf
+    patches:
+      - "@./patches/xenon/network.yaml"
+  - hostname: "radon"
+    ipAddress: "192.168.134.15"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/7c0a33081e0d1d96d1a4ec126c4f9277bd6ad18a7348fcb0c226476f68615f1c
+    controlPlane: false
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "70:70:fc:05:12:f7"
+        dhcp: false
+        addresses:
+          - "192.168.134.15/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.134.1"
+        mtu: 1500
+    extensionServices:
+      - name: tailscale
+        configFiles:
+        environment:
+          - TS_AUTHKEY=${tailscale_authkey}
+      - name: nut-client
+        configFiles:
+          - content: |-
+              MONITOR ${nut_server} 1 ${nut_user} ${nut_password} secondary
+              SHUTDOWNCMD "/sbin/poweroff"
+            mountPath: /usr/local/etc/nut/upsmon.conf
+    patches:
+      - "@./patches/radon/network.yaml"
+
+# Global patches
+patches:
+  - # Force nameserver
+    |-
+    machine:
+      network:
+        nameservers:
+          - 192.168.128.3
+          - 192.168.128.4
+  - # Configure NTP
+    |-
+    machine:
+      time:
+        disabled: false
+        servers:
+          - 192.168.128.3
+          - 192.168.128.4
+  - "@./patches/global/cluster-discovery.yaml"
+  - "@./patches/global/containerd.yaml"
+  - "@./patches/global/disable-search-domain.yaml"
+  - "@./patches/global/hostdns.yaml"
+  - "@./patches/global/kubelet.yaml"
+  - "@./patches/global/openebs-local.yaml"
+  - "@./patches/global/sysctl.yaml"
+
+# Controller patches
+controlPlane:
+  patches:
+    - "@./patches/controller/api-access.yaml"
+    - "@./patches/controller/cluster.yaml"
+    - "@./patches/controller/disable-admission-controller.yaml"
+    - "@./patches/controller/etcd.yaml"
+
