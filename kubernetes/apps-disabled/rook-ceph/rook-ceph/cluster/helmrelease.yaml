@@ -69,14 +69,14 @@ spec:
         connections:
           requireMsgr2: true
       storage:
-        useAllNodes: false
+        useAllNodes: true
         useAllDevices: false
         config:
           osdsPerDevice: "1"
         nodes:
           - name: "neon"
             devices:
-              - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH32152"
+              - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH321525"
           - name: "argon"
             devices:
               - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH322764"
