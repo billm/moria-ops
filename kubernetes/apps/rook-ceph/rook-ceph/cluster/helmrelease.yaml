@@ -70,25 +70,25 @@ spec:
           requireMsgr2: true
       storage:
         useAllNodes: true
-        useAllDevices: false
+        useAllDevices: true
         config:
           osdsPerDevice: "1"
-        nodes:
-          - name: "neon"
-            devices:
-              - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH321525"
-          - name: "argon"
-            devices:
-              - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH322764"
-          - name: "krypton"
-            devices:
-              - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH315397"
-          - name: "xenon"
-            devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2320E6D7817F"
-          - name: "radon"
-            devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2339439F0CE7"
+        # nodes:
+        #   - name: "neon"
+        #     devices:
+        #       - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH321525"
+        #   - name: "argon"
+        #     devices:
+        #       - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH322764"
+        #   - name: "krypton"
+        #     devices:
+        #       - name: "/dev/disk/by-id/ata-SAMSUNG_MZ7KM960HAHP-00005_S2HTNXAH315397"
+        #   - name: "xenon"
+        #     devices:
+        #       - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2320E6D7817F"
+        #   - name: "radon"
+        #     devices:
+        #       - name: "/dev/disk/by-id/nvme-CT1000P3PSSD8_2339439F0CE7"
 
       placement:
         mgr: &placement
