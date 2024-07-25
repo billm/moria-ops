@@ -6,8 +6,7 @@ metadata:
   name: intel-gpu-device
 spec:
   rules:
-    - # Intel UHD Graphics 630
-      name: intel.gpu
+    - name: intel.gpu
       labels:
         intel.feature.node.kubernetes.io/gpu: "true"
       matchFeatures:
@@ -15,3 +14,6 @@ spec:
           matchExpressions:
             class: { op: In, value: ["0300", "0380"] }
             vendor: { op: In, value: ["8086"] }
+        - feature: kernel.loadedmodule
+          matchExpressions:
+            i915: { op: Exists }
