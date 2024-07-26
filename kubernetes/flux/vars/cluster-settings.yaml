@@ -5,4 +5,10 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
-  SETTING_EXAMPLE: Global settings for your cluster go in this file, this file is NOT encrypted
+  # Common configuration variables
+  CONFIG_TIMEZONE: "US/Eastern"
+  # Service IPs advertised to BGP from Cilium
+  SVC_GATEWAY: 192.168.135.1
+  SVC_EXTERNAL_INGRESS: 192.168.135.2
+  SVC_INTERNAL_INGRESS: 192.168.135.3
+  SVC_PLEX: 192.168.135.4
