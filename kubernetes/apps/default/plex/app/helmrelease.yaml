@@ -105,34 +105,27 @@ spec:
 
     persistence:
       config:
-        existingClaim: plex-config
+        existingClaim: plex
         advancedMounts:
           plex:
             app:
               - path: /config
-      plex-cache:
+      cache:
         existingClaim: plex-cache
-        advancedMounts:
-          plex:
-            app:
-              - path: /config/Library/Application Support/Plex Media Server/Cache
+        globalMounts:
+          - path: /config/Library/Application Support/Plex Media Server/Cache
       logs:
         type: emptyDir
-        advancedMounts:
-          plex:
-            app:
-              - path: /config/Library/Application Support/Plex Media Server/Logs
+        globalMounts:
+          - path: /config/Library/Application Support/Plex Media Server/Logs
+      transcode:
+        type: emptyDir
+      tmp:
+        type: emptyDir
       media:
         type: nfs
         server: ${SECRET_NFS_SERVER}
         path: /volume1/Media
-        advancedMounts:
-          plex:
-            app:
-              - path: /data/media
-      transcode:
-        type: emptyDir
-        advancedMounts:
-          plex:
-            app:
-              - path: /transcode
+        globalMounts:
+          - path: /data/media
+            readonly: true
