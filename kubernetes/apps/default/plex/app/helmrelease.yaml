@@ -43,7 +43,7 @@ spec:
                   name: plex-secret
             env:
               TZ: "${CONFIG_TIMEZONE}"
-              PLEX_ADVERTISE_URL: https://${SVC_PLEX}:32400,https://{{ .Release.Name }}.${SECRET_DOMAIN}:443
+              PLEX_ADVERTISE_URL: http://${SVC_PLEX}:32400,https://{{ .Release.Name }}.${SECRET_DOMAIN}
               PLEX_NO_AUTH_NETWORKS: 192.168.0.0/16
             probes:
               liveness: &probes
