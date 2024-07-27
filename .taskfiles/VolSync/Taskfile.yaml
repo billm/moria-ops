@@ -60,7 +60,7 @@ tasks:
       - envsubst < <(cat {{.templatesDir}}/unlock.tmpl.yaml) | kubectl --context {{.cluster}} apply -f -
       - bash {{.scriptsDir}}/wait-for-k8s-job.sh {{.app}}-unlock-snapshots-{{.ts}} {{.ns}} {{.cluster}}
       - kubectl --context {{.cluster}} -n {{.ns}} wait job/{{.app}}-unlock-snapshots-{{.ts}} --for condition=complete --timeout=1m
-      - kubectl --context {{.cluster}} -n {{.ns}} logs job/{{.app}}-unlock-snapshots-{{.ts}} --container unlock-minio
+#      - kubectl --context {{.cluster}} -n {{.ns}} logs job/{{.app}}-unlock-snapshots-{{.ts}} --container unlock-minio
       - kubectl --context {{.cluster}} -n {{.ns}} logs job/{{.app}}-unlock-snapshots-{{.ts}} --container unlock-r2
       - kubectl --context {{.cluster}} -n {{.ns}} delete job {{.app}}-unlock-snapshots-{{.ts}}
     vars:
@@ -89,7 +89,7 @@ tasks:
       # # https://github.com/go-task/task/issues/608
       # - task: .suspend
       #   vars: *env
-      - kubectl --context {{.cluster}} -n {{.ns}} patch replicationsources {{.app}}-minio --type merge -p '{"spec":{"trigger":{"manual":"{{.ts}}"}}}'
+      - kubectl --context {{.cluster}} -n {{.ns}} patch replicationsources {{.app}} --type merge -p '{"spec":{"trigger":{"manual":"{{.ts}}"}}}'
       - bash {{.scriptsDir}}/wait-for-k8s-job.sh volsync-src-{{.app}} {{.ns}} {{.cluster}}
       - kubectl --context {{.cluster}} -n {{.ns}} wait job/volsync-src-{{.app}} --for condition=complete --timeout=120m
     vars:
@@ -108,7 +108,7 @@ tasks:
     preconditions:
       - sh: test -f {{.scriptsDir}}/wait-for-k8s-job.sh
         msg: "Wait script not found"
-      - sh: kubectl --context {{.cluster}} -n {{.ns}} get replicationsources {{.app}}-minio
+      - sh: kubectl --context {{.cluster}} -n {{.ns}} get replicationsources {{.app}}
         msg: "ReplicationSource '{{.app}}' not found in namespace '{{.ns}}'"
 
   # To run restore jobs in parallel for all replicationdestinations:

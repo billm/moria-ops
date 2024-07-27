@@ -14,14 +14,14 @@ spec:
       automountServiceAccountToken: false
       restartPolicy: OnFailure
       containers:
-        - name: unlock-minio
-          image: docker.io/restic/restic:0.16.2
-          args:
-            - unlock
-            - --remove-all
-          envFrom:
-            - secretRef:
-                name: "${app}-volsync-minio"
+        # - name: unlock-minio
+        #   image: docker.io/restic/restic:0.16.2
+        #   args:
+        #     - unlock
+        #     - --remove-all
+        #   envFrom:
+        #     - secretRef:
+        #         name: "${app}-volsync-minio-secret"
         - name: unlock-r2
           image: docker.io/restic/restic:0.16.2
           args:
@@ -29,4 +29,4 @@ spec:
             - --remove-all
           envFrom:
             - secretRef:
-                name: "${app}-volsync-r2"
+                name: "${app}-volsync-r2-secret"

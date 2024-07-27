@@ -33,7 +33,7 @@ spec:
     manual: restore-once
   restic:
     copyMethod: Snapshot
-    repository: "${APP}-volsync-r2"
+    repository: "${APP}-volsync-r2-secret"
     cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:-ceph-block}"
     cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:-ReadWriteOnce}"]
     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-1Gi}"
