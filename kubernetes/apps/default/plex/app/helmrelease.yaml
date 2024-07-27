@@ -128,4 +128,4 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /data/media
-            readonly: true
+            readOnly: true
