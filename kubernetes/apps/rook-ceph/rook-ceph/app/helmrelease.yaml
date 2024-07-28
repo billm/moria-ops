@@ -30,6 +30,7 @@ spec:
     csi:
       cephFSKernelMountOptions: ms_mode=prefer-crc
       enableLiveness: true
+      enableDiscoveryDaemon: true
       serviceMonitor:
         enabled: true
     monitoring:
