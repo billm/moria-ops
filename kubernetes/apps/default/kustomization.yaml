@@ -7,5 +7,6 @@ resources:
   - ./namespace.yaml
   # Apps
   - ./homepage/ks.yaml
+  - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
   - ./redlib/ks.yaml
