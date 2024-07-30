@@ -15,7 +15,7 @@ resources:
   - ./radarr/ks.yaml
   - ./recyclarr/ks.yaml
   - ./redlib/ks.yaml
-  - ./sabnzb/ks.yaml
+  - ./sabnzbd/ks.yaml
   - ./sonarr/ks.yaml
   - ./tautulli/ks.yaml
   - ./unpackerr/ks.yaml
