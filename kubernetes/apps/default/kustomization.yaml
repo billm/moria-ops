@@ -6,7 +6,16 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Apps
+  - ./bazarr/ks.yaml
   - ./homepage/ks.yaml
+  - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
+  - ./prowlarr/ks.yaml
+  - ./radarr/ks.yaml
+  - ./recyclarr/ks.yaml
   - ./redlib/ks.yaml
+  - ./sabnzb/ks.yaml
+  - ./sonarr/ks.yaml
+  - ./tautulli/ks.yaml
+  - ./unpackerr/ks.yaml
