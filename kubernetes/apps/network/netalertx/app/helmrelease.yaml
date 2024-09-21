@@ -74,9 +74,7 @@ spec:
         existingClaim: netalertx
         globalMounts:
           - path: /app/config
-            subPath: config
       data:
-        existingClaim: netalertx
+        existingClaim: netalertx-db
         globalMounts:
           - path: /app/db
-            subPath: db

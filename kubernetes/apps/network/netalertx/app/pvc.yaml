@@ -1,0 +1,90 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: netalertx-db
+spec:
+  accessModes: ["ReadWriteOnce"]
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: "netalertx-db-dst"
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: ceph-block
+
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/external-secrets.io/externalsecret_v1beta1.json
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: "netalertx-db-volsync-r2"
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: onepassword-connect
+  target:
+    name: "netalertx-db-volsync-r2-secret"
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: "{{ .REPOSITORY_TEMPLATE }}/netalertx-db"
+        RESTIC_PASSWORD: "{{ .RESTIC_PASSWORD }}"
+        AWS_ACCESS_KEY_ID: "{{ .AWS_ACCESS_KEY_ID }}"
+        AWS_SECRET_ACCESS_KEY: "{{ .AWS_SECRET_ACCESS_KEY }}"
+  dataFrom:
+    - extract:
+        key: cloudflare
+    - extract:
+        key: volsync-r2-template
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/volsync.backube/replicationdestination_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: "netalertx-db-dst"
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    copyMethod: Snapshot
+    repository: "netalertx-db-volsync-r2-secret"
+    cacheStorageClassName: "ceph-block"
+    cacheAccessModes: ["ReadWriteOnce"]
+    cacheCapacity: "1Gi"
+    storageClassName: "ceph-block"
+    volumeSnapshotClassName: "csi-ceph-blockpool"
+    moverSecurityContext:
+      runAsUser: ${APP_UID:-2000}
+      runAsGroup: ${APP_GID:-2000}
+      fsGroup: ${APP_GID:-2000}
+    accessModes:
+      - "ReadWriteOnce"
+    capacity: "5Gi"
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: "netalertx-db-r2"
+spec:
+  sourcePVC: "netalertx-db"
+  trigger:
+    schedule: "0 0 * * *"
+  restic:
+    copyMethod: "Snapshot"
+    repository: "netalertx-db-volsync-r2-secret"
+    volumeSnapshotClassName: "csi-ceph-blockpool"
+    cacheCapacity: "1Gi"
+    cacheStorageClassName: "ceph-block"
+    cacheAccessModes: ["ReadWriteOnce"]
+    storageClassName: "ceph-block"
+    accessModes: ["ReadWriteOnce"]
+    moverSecurityContext:
+      runAsUser: ${APP_UID:-2000}
+      runAsGroup: ${APP_GID:-2000}
+      fsGroup: ${APP_GID:-2000}
+    pruneIntervalDays: 7
+    retain:
+      daily: 7
