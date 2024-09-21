@@ -35,7 +35,7 @@ spec:
         supplementalGroups:
           - 100 # Users
     controllers:
-      valheim:
+      netalertx:
         annotations:
           reloader.stakater.com/search: "true"
         containers:
@@ -45,8 +45,8 @@ spec:
               tag: 24.9.2@sha256:e6b469628ddf4b7342d2ed4484aaffe6c580fae7887a6d9f5e5a2f4d6c17718e
             resources:
               requests:
-                cpu: 511m
-                memory: 5528Mi
+                cpu: 10m
+                memory: 512Mi
 
     service:
       app:
