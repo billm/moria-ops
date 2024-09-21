@@ -1,0 +1,82 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: netalertx
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 3.4.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+    - name: volsync
+      namespace: volsync-system
+
+  values:
+    defaultPodOptions:
+      securityContext:
+        supplementalGroups:
+          - 100 # Users
+    controllers:
+      valheim:
+        annotations:
+          reloader.stakater.com/search: "true"
+        containers:
+          app:
+            image:
+              repository: jokobsk/netalertx
+              tag: 24.9.2@sha256:e6b469628ddf4b7342d2ed4484aaffe6c580fae7887a6d9f5e5a2f4d6c17718e
+            resources:
+              requests:
+                cpu: 511m
+                memory: 5528Mi
+
+    service:
+      app:
+        controller: netalertx
+        ports:
+          http:
+            port: 20211
+            protocol: TCP
+
+    ingress:
+      app:
+        className: internal
+        annotations:
+          external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
+        hosts:
+          - host: &host "netalertx.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+
+    persistence:
+      config:
+        existingClaim: netalertx
+        globalMounts:
+          - path: /app/config
+            subPath: config
+      data:
+        existingClaim: netalertx
+        globalMounts:
+          - path: /app/db
+            subPath: db
