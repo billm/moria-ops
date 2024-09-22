@@ -1,1 +1,6 @@
 ---
+- Kubernetes:
+  - kubesearch:
+    - href: https://kubesearch.dev/
+  - Cluster Template:
+    - href: https://github.com/onedr0p/cluster-template

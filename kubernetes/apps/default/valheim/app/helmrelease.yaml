@@ -63,6 +63,7 @@ spec:
         externalTrafficPolicy: Cluster
         annotations:
           io.cilium/lb-ipam-ips: "${SVC_VALHEIM}"
+
         ports:
           http:
             port: 80
@@ -85,6 +86,12 @@ spec:
         className: external
         annotations:
           external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: "Game Servers"
+          gethomepage.dev/name: Valheim
+          gethomepage.dev/icon: https://cdn2.steamgriddb.com/icon/a0b83c02d720415dada82e08bc09e9f3/32/256x256.png
+          gethomepage.dev/href: "http://valheim.${SECRET_DOMAIN}:9001"
+
         hosts:
           - host: &host "valheim.${SECRET_DOMAIN}"
             paths:
