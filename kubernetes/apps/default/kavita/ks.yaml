@@ -6,7 +6,7 @@ metadata:
   name: &app kavita
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/media/kavita/app
+  path: ./kubernetes/apps/default/kavita/app
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
