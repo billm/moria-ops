@@ -49,15 +49,15 @@ data:
   services.yaml: |
     - Network:
       - Cloudflared:
-        href: https://dash.cloudflare.com/
-        icon: cloudflare-zero-trust.png
-        description: Cloudflared Tunnel Status
-        widget:
-          type: cloudflared
-          accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
-          tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
-          key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
-          fields: ["status"]
+          href: https://dash.cloudflare.com/
+          icon: cloudflare-zero-trust.png
+          description: Cloudflared Tunnel Status
+          widget:
+            type: cloudflared
+            accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
+            tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
+            key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
+            fields: ["status"]
         # - Healthchecks:
         #     href: https://healthchecks.io/
         #     icon: healthchecks.png
@@ -78,55 +78,55 @@ data:
         #       password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
     - Media:
       - Bazarr:
-        icon: bazarr.png
-        href: https://bazarr.${SECRET_DOMAIN}
-        description: Subtitles Management
-        widget:
-          type: bazarr
-          url: http://bazarr.default.svc.cluster.local:6767
-          key: {{HOMEPAGE_VAR_BAZARR_TOKEN}}
+          icon: bazarr.png
+          href: https://bazarr.${SECRET_DOMAIN}
+          description: Subtitles Management
+          widget:
+            type: bazarr
+            url: http://bazarr.default.svc.cluster.local:6767
+            key: {{HOMEPAGE_VAR_BAZARR_TOKEN}}
       - Prowlarr:
-        href: https://prowlarr.${SECRET_DOMAIN}
-        icon: prowlarr.png
-        description: Movies
-        widget:
-          type: prowlarr
-          url: http://prowlarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_PROWLARR_TOKEN}}
+          href: https://prowlarr.${SECRET_DOMAIN}
+          icon: prowlarr.png
+          description: Movies
+          widget:
+            type: prowlarr
+            url: http://prowlarr.default.svc.cluster.local:80
+            key: {{HOMEPAGE_VAR_PROWLARR_TOKEN}}
       - Radarr:
-        href: https://radarr.${SECRET_DOMAIN}
-        icon: radarr.png
-        description: Movies
-        widget:
-          type: radarr
-          url: http://radarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_RADARR_TOKEN}}
-          enableQueue: true
+          href: https://radarr.${SECRET_DOMAIN}
+          icon: radarr.png
+          description: Movies
+          widget:
+            type: radarr
+            url: http://radarr.default.svc.cluster.local:80
+            key: {{HOMEPAGE_VAR_RADARR_TOKEN}}
+            enableQueue: true
       - Readarr:
-        href: https://readarr.${SECRET_DOMAIN}
-        icon: readarr.png
-        description: Books
-        widget:
-          type: readarr
-          url: http://readarr.default.svc.cluster.local:8787
-          key: {{HOMEPAGE_VAR_READARR_TOKEN}}
+          href: https://readarr.${SECRET_DOMAIN}
+          icon: readarr.png
+          description: Books
+          widget:
+            type: readarr
+            url: http://readarr.default.svc.cluster.local:8787
+            key: {{HOMEPAGE_VAR_READARR_TOKEN}}
       - SABnzbd:
-        href: https://sabnzbd.${SECRET_DOMAIN}
-        icon: sabnzbd.png
-        description: Usenet Downloader
-        widget:
-          type: sabnzbd
-          url: http://sabnzbd.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_SABNZBD_TOKEN}}
+          href: https://sabnzbd.${SECRET_DOMAIN}
+          icon: sabnzbd.png
+          description: Usenet Downloader
+          widget:
+            type: sabnzbd
+            url: http://sabnzbd.default.svc.cluster.local:80
+            key: {{HOMEPAGE_VAR_SABNZBD_TOKEN}}
       - Sonarr:
-        href: https://sonarr.${SECRET_DOMAIN}
-        icon: sonarr.png
-        description: TV Shows
-        widget:
-          type: sonarr
-          url: http://sonarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_SONARR_TOKEN}}
-          enableQueue: true
+          href: https://sonarr.${SECRET_DOMAIN}
+          icon: sonarr.png
+          description: TV Shows
+          widget:
+            type: sonarr
+            url: http://sonarr.default.svc.cluster.local:80
+            key: {{HOMEPAGE_VAR_SONARR_TOKEN}}
+            enableQueue: true
 
     # - Games:
     #     - Create:
@@ -192,7 +192,7 @@ data:
     useEqualHeights: true
     theme: dark
     background:
-      image: https://raw.githubusercontent.com/joryirving/home-ops/main/docs/src/assets/101518784_p0.jpg
+      image: https://raw.githubusercontent.com/billm/moria-ops/main/docs/assets/vincentiu-solomon-ln5drpv_lml-unsplash.jpg
       opacity: 20
     color: slate
     headerStyle: clean
