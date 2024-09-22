@@ -8,6 +8,7 @@ resources:
   # Apps
   - ./bazarr/ks.yaml
   - ./homepage/ks.yaml
+  - ./kavita/ks.yaml
   - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
