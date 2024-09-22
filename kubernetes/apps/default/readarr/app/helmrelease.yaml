@@ -111,4 +111,4 @@ spec:
         server: ${SECRET_NFS_SERVER}
         path: /volume1/Media
         globalMounts:
-          - path: /data/media
+          - path: /media
