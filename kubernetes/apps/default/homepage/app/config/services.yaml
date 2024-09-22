@@ -1,5 +1,5 @@
 ---
-- Home:
+#- Home:
     # - HomeAssistant:
     #     href: https://hass.${SECRET_DOMAIN}
     #     icon: home-assistant.png
@@ -22,7 +22,7 @@
         icon: prowlarr.png
         description: Movies
         widget:
-            type: radarr
+            type: prowlarr
             url: http://prowlarr.default.svc.cluster.local.:80
             key: {{HOMEPAGE_VAR_PROWLARR_TOKEN}}
     - Radarr:
@@ -33,6 +33,7 @@
             type: radarr
             url: http://radarr.default.svc.cluster.local.:80
             key: {{HOMEPAGE_VAR_RADARR_TOKEN}}
+            enableQueue: true
     - Readarr:
         href: https://readarr.${SECRET_DOMAIN}
         icon: readarr.png
@@ -57,6 +58,7 @@
             type: sonarr
             url: http://sonarr.default.svc.cluster.local.:80
             key: {{HOMEPAGE_VAR_SONARR_TOKEN}}
+            enableQueue: true
 # - Calendar:
 #     - Agenda:
 #         widget:
