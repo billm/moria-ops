@@ -42,7 +42,8 @@ spec:
               TZ: ${CONFIG_TIMEZONE}
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+# Gag...TODO KILL THIS WITH FIRE ASAP
+              readOnlyRootFilesystem: false
               capabilities: { drop: ["ALL"] }
             resources:
               requests:
@@ -51,10 +52,9 @@ spec:
               limits:
                 memory: 500Mi
     defaultPodOptions:
-# Gag...TODO KILL THIS WITH FIRE ASAP
       securityContext:
+# Gag...TODO KILL THIS WITH FIRE ASAP
         runAsNonRoot: false
-        readOnlyRootFilesystem: false
     #     runAsUser: 568
     #     runAsGroup: 568
     #     fsGroup: 568
