@@ -9,6 +9,7 @@ resources:
   - ./bazarr/ks.yaml
   - ./homepage/ks.yaml
   - ./kavita/ks.yaml
+  - ./lazylibrarian/ks.yaml
   - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
