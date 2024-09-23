@@ -50,9 +50,11 @@ spec:
                 memory: 300Mi
               limits:
                 memory: 500Mi
-    # defaultPodOptions:
-    #   securityContext:
-    #     runAsNonRoot: true
+    defaultPodOptions:
+# Gag...TODO KILL THIS WITH FIRE ASAP
+      securityContext:
+        runAsNonRoot: false
+        readOnlyRootFilesystem: false
     #     runAsUser: 568
     #     runAsGroup: 568
     #     fsGroup: 568
