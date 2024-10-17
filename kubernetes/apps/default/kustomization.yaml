@@ -10,6 +10,7 @@ resources:
   - ./homepage/ks.yaml
   - ./kavita/ks.yaml
 #  - ./lazylibrarian/ks.yaml
+  - ./n8n/ks.yaml
   - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
