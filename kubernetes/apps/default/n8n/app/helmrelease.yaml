@@ -108,7 +108,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: n8n
+                  identifier: app
                   port: *port
         tls:
           - hosts:
