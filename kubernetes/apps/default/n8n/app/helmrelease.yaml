@@ -82,7 +82,7 @@ spec:
               N8N_USER_MANAGEMENT_DISABLED: true
 
               N8N_METRICS: true
-              N8N_USER_FOLDER: /n8n
+              N8N_USER_FOLDER: /home/node
               #NODE_FUNCTION_ALLOW_EXTERNAL: databricks/sql
             envFrom: *envFrom
     service:
@@ -120,7 +120,7 @@ spec:
         advancedMounts:
           n8n:
             n8n:
-              - path: /n8n
+              - path: /home/node/
 
     resources:
       requests:
