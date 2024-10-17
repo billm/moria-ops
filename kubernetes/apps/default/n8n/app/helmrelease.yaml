@@ -4,26 +4,27 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app n8n
+  namespace: default
 spec:
   interval: 5m
   chart:
     spec:
       chart: app-template
       version: 3.5.1
-      interval: 30m
       sourceRef:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
+      interval: 5m
   install:
+    createNamespace: true
     remediation:
-      retries: 3
+      retries: 5
+      remediateLastFailure: true
   upgrade:
-    cleanupOnFail: true
     remediation:
-      strategy: rollback
-      retries: 3
-
+      retries: 5
+      remediateLastFailure: true
   values:
     defaultPodOptions:
       affinity:
@@ -33,28 +34,27 @@ spec:
             - matchExpressions:
               - key: node-role.kubernetes.io/control-plane
                 operator: DoesNotExist
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
 
     controllers:
       n8n:
-
-        pod:
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            fsGroup: 1000
-            fsGroupChangePolicy: "OnRootMismatch"
-
+        annotations:
+          reloader.stakater.com/auto: "true"
         initContainers:
           init-db:
             image:
               repository: ghcr.io/onedr0p/postgres-init
               tag: 16
               pullPolicy: IfNotPresent
-            envFrom:
+            envFrom: &envFrom
               - secretRef:
                   name: n8n-secret
         containers:
-          n8n:
+          app:
             image:
               repository: docker.io/n8nio/n8n
               tag: 1.63.2
@@ -83,20 +83,17 @@ spec:
 
               N8N_METRICS: true
               N8N_USER_FOLDER: /n8n
-              NODE_FUNCTION_ALLOW_EXTERNAL: databricks/sql
-            envFrom:
-              - secretRef:
-                  name: n8n-secret
-
+              #NODE_FUNCTION_ALLOW_EXTERNAL: databricks/sql
+            envFrom: *envFrom
     service:
-      n8n:
+      app:
         controller: n8n
         ports:
           http:
             port: *port
 
     ingress:
-      external:
+      app:
         annotations:
           external-dns.alpha.kubernetes.io/target: ${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
