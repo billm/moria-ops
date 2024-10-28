@@ -86,6 +86,6 @@ spec:
       UI_CLAIM: ollama-ui-data
     substituteFrom: []
   dependsOn:
-    - name: amd-device-plugins-gpu
+    - name: amd-device-plugin
     - name: ollama-backend-pvc
     - name: ollama-ui-pvc
