@@ -11,6 +11,7 @@ resources:
   - ./kavita/ks.yaml
 #  - ./lazylibrarian/ks.yaml
   - ./n8n/ks.yaml
+  - ./ollama/ks.yaml
   - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
