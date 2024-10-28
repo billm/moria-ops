@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   # apps
+  - ./amd-device-plugin/ks.yaml
   - ./cilium/ks.yaml
   - ./coredns/ks.yaml
   - ./intel-device-plugin/ks.yaml
