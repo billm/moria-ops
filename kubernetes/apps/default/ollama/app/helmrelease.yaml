@@ -85,7 +85,7 @@ spec:
                 memory: 2Gi
     service:
       backend:
-        controller: main
+        controller: backend
         ports:
           http:
             port: &port 11434
