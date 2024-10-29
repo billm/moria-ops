@@ -252,6 +252,7 @@ data:
           memory: true
           show: true
           showLabel: true
+          label: "cluster"
         nodes:
           cpu: true
           memory: true
@@ -261,7 +262,7 @@ data:
         label: Home
         latitude: ${SECRET_LATITUDE}
         longitude: ${SECRET_LONGITUDE}
-        units: metric
+        units: imperial
         cache: 5
     - datetime:
         text_size: l
