@@ -84,6 +84,8 @@ spec:
               requests:
                 cpu: 50m
                 memory: 128Mi
+              limits:
+                memory: 2Gi
     service:
       app:
         controller: hoarder
