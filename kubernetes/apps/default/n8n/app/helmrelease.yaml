@@ -99,7 +99,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
-          gethomepage.dev/icon: mdi:water-flow
+          gethomepage.dev/icon: sh-n8n
 
 
         className: internal

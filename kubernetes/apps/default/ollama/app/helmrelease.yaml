@@ -39,8 +39,10 @@ spec:
               TZ: ${CONFIG_TIMEZONE}
               HSA_OVERRIDE_GFX_VERSION: 11.0.0
               HCC_AMDGPU_TARGETS: gfx1103
+              OLLAMA_LLM_LIBRARY: rocm_v60102
               OLLAMA_HOST: 0.0.0.0
               OLLAMA_ORIGINS: "*"
+              OLLAMA_MODELS: &pvc /models
             resources:
               requests:
                 cpu: 200m
@@ -75,7 +77,6 @@ spec:
               WEBUI_URL: https://ollama.${SECRET_DOMAIN}
               DATA_DIR: /data
               OLLAMA_BASE_URL: http://ollama-backend.default.svc.cluster.local:11434
-              OLLAMA_MODELS: &pvc /models
               RAG_EMBEDDING_ENGINE: ollama
             resources:
               requests:
@@ -100,6 +101,10 @@ spec:
         enabled: true
         className: internal
         annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: *app
+          gethomepage.dev/icon: sh-open-webui
         hosts:
           - host: &host ollama.${SECRET_DOMAIN}
             paths:
@@ -118,7 +123,7 @@ spec:
         advancedMounts:
           backend:
             main:
-              - path: /.ollama
+              - path: /root/.ollama
       ui-config:
         enabled: true
         existingClaim: ${UI_CLAIM}

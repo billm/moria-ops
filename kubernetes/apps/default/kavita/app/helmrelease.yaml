@@ -69,7 +69,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
-          gethomepage.dev/icon: si-kavita
+          gethomepage.dev/icon: sh-kavita
         hosts:
           - host: kavita.${SECRET_DOMAIN}
             paths:
