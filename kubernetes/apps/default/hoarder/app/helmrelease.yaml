@@ -34,6 +34,7 @@ spec:
               tag: 0.18.0@sha256:a49249cd3d4966f1c41a2eb6d9b30e5564d769ffe65ee804859efd696159930b
             env:
               DATA_DIR: /data
+              NEXTAUTH_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
               MEILI_ADDR: http://hoarder-meilisearch:7700
               BROWSER_WEB_URL: http://hoarder-chrome:9222
               OLLAMA_BASE_URL: "ollama.default.svc.cluster.local:11434"
