@@ -32,9 +32,9 @@ data:
           href: 'https://music.youtube.com'
     - Reading:
       - Hacker News:
-        - icon: hackernews.png
+        - icon: sh-hacker-news
           href: 'https://news.ycombinator.com'
-    - Git:
+    - Kubernetes:
       - kubesearch:
         - icon: kubernetes-dashboard.png
           href: 'https://kubesearch.dev/'
@@ -255,12 +255,12 @@ data:
         nodes:
           cpu: true
           memory: true
-          show: false
+          show: true
           showLabel: true
     - openmeteo:
         label: Home
-        latitude: ${LATITUDE}
-        longitude: ${LONGITUDE}
+        latitude: ${SECRET_LATITUDE}
+        longitude: ${SECRET_LONGITUDE}
         units: metric
         cache: 5
     - datetime:
