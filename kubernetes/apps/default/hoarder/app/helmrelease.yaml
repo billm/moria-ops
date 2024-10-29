@@ -38,7 +38,7 @@ spec:
               MEILI_ADDR: http://hoarder-meilisearch:7700
               BROWSER_WEB_URL: http://hoarder-chrome:9222
               OLLAMA_BASE_URL: "ollama.default.svc.cluster.local:11434"
-              INFERENCE_TEXT_MODEL: "mistral"
+              INFERENCE_TEXT_MODEL: "mistral-nemo"
               INFERENCE_IMAGE_MODEL: "llava"
             envFrom: &envFrom
               - secretRef:
