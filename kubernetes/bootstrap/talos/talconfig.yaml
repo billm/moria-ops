@@ -3,7 +3,7 @@
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
 talosVersion: v1.8.2
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.30.3
+kubernetesVersion: v1.31.2
 
 clusterName: "moria"
 endpoint: https://192.168.134.10:6443
