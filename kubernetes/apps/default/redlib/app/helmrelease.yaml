@@ -31,7 +31,7 @@ spec:
           app:
             image:
               repository: quay.io/redlib/redlib
-              tag: latest@sha256:1f120c85fc33bdac67c97d5d1a6c84a920be40742fbf311c970ab2749a435778
+              tag: latest@sha256:d04e722091fe17424425499882a548507a70654f37aaf8cbc71081ef29b7b341
               #repository: ghcr.io/auricom/redlib
               #tag: 0.35.1@sha256:e2712d88dfa3e9ff765bb16142101b653364130f9e6c94aa862199ad36be1b6b
 
