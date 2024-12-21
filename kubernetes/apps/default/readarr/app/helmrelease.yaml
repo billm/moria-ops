@@ -43,8 +43,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/onedr0p/readarr-develop
-              tag: 0.3.32.2587@sha256:1ffa6357a1e0f2dd9c608a1a2d4064e09b76d834059dda38414c734146cfa201
+              repository: ghcr.io/elfhosted/readarr-develop
+              tag: 0.4.3.2699
             env:
               READARR__INSTANCE_NAME: Readarr
               READARR__LOG_LEVEL: info
