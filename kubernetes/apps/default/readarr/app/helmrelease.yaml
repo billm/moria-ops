@@ -112,3 +112,5 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /media
+      tmp:
+        type: emptyDir
