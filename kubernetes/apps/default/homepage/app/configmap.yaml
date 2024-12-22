@@ -48,6 +48,8 @@ data:
     mode: cluster
   services.yaml: |
     - Network:
+      style: column
+      icon: mdi-network
       - Cloudflared:
           href: https://dash.cloudflare.com/
           icon: cloudflare-zero-trust.png
