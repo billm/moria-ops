@@ -97,8 +97,13 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: "Media"
           gethomepage.dev/name: "Readarr"
+          gethomepage.dev/group: "Media"
+          gethomepage.dev/description: "Book Management"
+          gethomepage.dev/icon: "sh-readarr"
+          gethomepage.dev/widget.type: "readarr"
+          gethomepage.dev/widget.url: "https://readarr.${SECRET_DOMAIN}"
+          gethomepage.dev/widget.key: "{{`{{READARR__AUTH__APIKEY}}`}}"
         hosts:
           - host: readarr.${SECRET_DOMAIN}
             paths:
