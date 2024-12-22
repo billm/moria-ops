@@ -73,8 +73,8 @@ spec:
               repository: ghcr.io/open-webui/open-webui
               tag: main
             env:
-              WEBUI_NAME: Ollama
-              WEBUI_URL: https://ollama.${SECRET_DOMAIN}
+              WEBUI_NAME: Open WebUI Chat
+              WEBUI_URL: https://chatgpt.${SECRET_DOMAIN}
               DATA_DIR: /data
               OLLAMA_BASE_URL: http://ollama-backend.default.svc.cluster.local:11434
               RAG_EMBEDDING_ENGINE: ollama
@@ -105,8 +105,10 @@ spec:
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-open-webui
+          gethomepage.dev/description: "ChatGPT"
+          gethomepage.dev/href: "https://chatgpt.${SECRET_DOMAIN}"
         hosts:
-          - host: &host ollama.${SECRET_DOMAIN}
+          - host: &host chatgpt.${SECRET_DOMAIN}
             paths:
               - path: /
                 service:
@@ -115,7 +117,7 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: ollama-tls-internal
+            secretName: chatgpt-tls-internal
     persistence:
       backend-config:
         enabled: true

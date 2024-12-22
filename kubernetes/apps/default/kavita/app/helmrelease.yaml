@@ -70,6 +70,7 @@ spec:
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-kavita
+          gethomepage.dev/description: "Digital Book Library"
         hosts:
           - host: kavita.${SECRET_DOMAIN}
             paths:

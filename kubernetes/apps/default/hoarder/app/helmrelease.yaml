@@ -110,6 +110,7 @@ spec:
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-hoarder.png
+          gethomepage.dev/description: "Personal Bookmark Library"
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:

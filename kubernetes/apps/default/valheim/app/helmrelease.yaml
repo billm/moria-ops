@@ -89,6 +89,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: "Game Servers"
           gethomepage.dev/name: Valheim
+          gethomepage.dev/description: "Viking Survival Game"
           gethomepage.dev/icon: https://cdn2.steamgriddb.com/icon/a0b83c02d720415dada82e08bc09e9f3/32/256x256.png
 
         hosts:

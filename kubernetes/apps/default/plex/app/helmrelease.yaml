@@ -105,6 +105,12 @@ spec:
       app:
         annotations:
           external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/name: "Plex"
+          gethomepage.dev/icon: sh-plex
+          gethomepage.dev/description: "Media Server"
+          gethomepage.dev/url: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
 #          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         className: external
         hosts:

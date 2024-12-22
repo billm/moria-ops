@@ -62,8 +62,9 @@ spec:
         annotations:
           hajimari.io/icon: mdi:sync
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: "Services"
+          gethomepage.dev/group: "Observability"
           gethomepage.dev/name: "Capacitor"
+          gethomepage.dev/description: "Flux2 Monitor"
           gethomepage.dev/href: "https://capacitor.${SECRET_DOMAIN}"
           gethomepage.dev/icon: si-capacitor
         hosts:

@@ -37,8 +37,9 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: "Storage"
+          gethomepage.dev/group: "Services"
           gethomepage.dev/name: "Rook Dashboard"
+          gethomepage.dev/description: "Rook Ceph Dashboard"
           gethomepage.dev/pod-selector: app.kubernetes.io/name=ceph-mgr
           gethomepage.dev/icon: si-ceph
         ingressClassName: internal

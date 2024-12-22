@@ -100,7 +100,7 @@ spec:
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-n8n
-
+          gethomepage.dev/description: "Workflow Automation"
 
         className: internal
         hosts:
