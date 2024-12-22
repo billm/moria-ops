@@ -47,17 +47,18 @@ data:
   kubernetes.yaml: |
     mode: cluster
   services.yaml: |
-    - Network:
-      - Cloudflared:
-          href: https://dash.cloudflare.com/
-          icon: cloudflare-zero-trust.png
-          description: Cloudflared Tunnel Status
-          widget:
-            type: cloudflared
-            accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
-            tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
-            key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
-            fields: ["status"]
+    - Applications:
+      - Network:
+        - Cloudflared:
+            href: https://dash.cloudflare.com/
+            icon: cloudflare-zero-trust.png
+            description: Cloudflared Tunnel Status
+            widget:
+              type: cloudflared
+              accountid: {{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}
+              tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
+              key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
+              fields: ["status"]
         # - Healthchecks:
         #     href: https://healthchecks.io/
         #     icon: healthchecks.png
@@ -118,12 +119,12 @@ data:
     #           key: {{HOMEPAGE_VAR_HASS_TOKEN}}
   settings.yaml: |
     title: Dashboard
-    favicon: https://github.com/walkxcode/dashboard-icons/blob/main/png/heimdall.png
+    # favicon: https://github.com/walkxcode/dashboard-icons/blob/main/png/heimdall.png
     useEqualHeights: true
     theme: dark
-    background:
-      image: https://github.com/billm/moria-ops/blob/main/docs/assets/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg?raw=true
-      opacity: 20
+    # background:
+    #   image: "https://github.com/billm/moria-ops/blob/main/docs/assets/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg?raw=true"
+    #   opacity: 20
     color: slate
     headerStyle: clean
     quicklaunch:
