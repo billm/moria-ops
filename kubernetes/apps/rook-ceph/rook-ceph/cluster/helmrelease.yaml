@@ -41,6 +41,7 @@ spec:
           gethomepage.dev/name: "Rook Dashboard"
           gethomepage.dev/description: "Rook Ceph Dashboard"
           gethomepage.dev/pod-selector: app.kubernetes.io/name=ceph-mgr
+          gethomepage.dev/href: "https://rook.${SECRET_DOMAIN}"
           gethomepage.dev/icon: si-ceph
         ingressClassName: internal
         host:

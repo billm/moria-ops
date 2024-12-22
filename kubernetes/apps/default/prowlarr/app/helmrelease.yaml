@@ -95,6 +95,7 @@ spec:
           gethomepage.dev/name: "Prowlarr"
           gethomepage.dev/group: "Media"
           gethomepage.dev/description: "Usenet Indexer"
+          gethomepage.dev/href: "https://prowlarr.${SECRET_DOMAIN}"
           gethomepage.dev/icon: "sh-prowlarr"
           gethomepage.dev/widget.type: "prowlarr"
           gethomepage.dev/widget.url: "https://prowlarr.${SECRET_DOMAIN}"

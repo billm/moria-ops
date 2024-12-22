@@ -111,6 +111,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-hoarder.png
           gethomepage.dev/description: "Personal Bookmark Library"
+          gethomepage.dev/href: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:

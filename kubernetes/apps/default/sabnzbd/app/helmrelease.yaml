@@ -96,6 +96,7 @@ spec:
           gethomepage.dev/group: "Media"
           gethomepage.dev/description: "Usenet Downloader"
           gethomepage.dev/icon: "sh-sabnzbd"
+          gethomepage.dev/href: "https://sabnzbd.${SECRET_DOMAIN}"
           gethomepage.dev/widget.type: "sabnzbd"
           gethomepage.dev/widget.url: "https://sabnzbd.${SECRET_DOMAIN}"
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_TOKEN}}`}}"

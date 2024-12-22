@@ -85,6 +85,8 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Services
           gethomepage.dev/name: *app
+          gethomepage.dev/description: "Web-based PostgreSQL administration tool"
+          gethomepage.dev/href: "https://pgadmin.${SECRET_DOMAIN}"
           gethomepage.dev/icon: si-postgresql
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"

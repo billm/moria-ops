@@ -71,6 +71,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-kavita
           gethomepage.dev/description: "Digital Book Library"
+          gethomepage.dev/href: "https://kavita.${SECRET_DOMAIN}"
         hosts:
           - host: kavita.${SECRET_DOMAIN}
             paths:

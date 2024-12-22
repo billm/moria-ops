@@ -110,7 +110,7 @@ spec:
           gethomepage.dev/name: "Plex"
           gethomepage.dev/icon: sh-plex
           gethomepage.dev/description: "Media Server"
-          gethomepage.dev/url: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
+          gethomepage.dev/href: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
 #          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         className: external
         hosts:

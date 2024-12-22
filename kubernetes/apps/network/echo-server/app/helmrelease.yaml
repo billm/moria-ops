@@ -86,6 +86,8 @@ spec:
           gethomepage.dev/group: "Network"
           gethomepage.dev/name: "Echo Server"
           gethomepage.dev/icon: si-codemirror
+          gethomepage.dev/description: "HTTP/HTTPS Echo Server"
+          gethomepage.dev/href: "https://echo-server.${SECRET_DOMAIN}"
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:

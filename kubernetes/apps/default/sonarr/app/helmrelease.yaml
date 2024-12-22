@@ -100,6 +100,7 @@ spec:
           gethomepage.dev/group: "Media"
           gethomepage.dev/description: "TV Shows"
           gethomepage.dev/icon: "sh-sonarr"
+          gethomepage.dev/href: "https://sonarr.${SECRET_DOMAIN}"
           gethomepage.dev/widget.type: "sonarr"
           gethomepage.dev/widget.url: "https://sonarr.${SECRET_DOMAIN}"
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_TOKEN}}`}}"

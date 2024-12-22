@@ -101,6 +101,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/icon: sh-n8n
           gethomepage.dev/description: "Workflow Automation"
+          gethomepage.dev/href: "https://n8n.${SECRET_DOMAIN}"
 
         className: internal
         hosts:

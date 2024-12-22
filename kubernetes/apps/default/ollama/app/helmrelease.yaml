@@ -103,9 +103,9 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home
-          gethomepage.dev/name: *app
+          gethomepage.dev/name: "ChatGPT"
           gethomepage.dev/icon: sh-open-webui
-          gethomepage.dev/description: "ChatGPT"
+          gethomepage.dev/description: "Open WebUI"
           gethomepage.dev/href: "https://chatgpt.${SECRET_DOMAIN}"
         hosts:
           - host: &host chatgpt.${SECRET_DOMAIN}

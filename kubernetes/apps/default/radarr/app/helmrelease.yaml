@@ -99,6 +99,7 @@ spec:
           gethomepage.dev/name: "Radarr"
           gethomepage.dev/group: "Media"
           gethomepage.dev/description: "Movie Downloader"
+          gethomepage.dev/href: "https://radarr.${SECRET_DOMAIN}"
           gethomepage.dev/icon: "sh-radarr"
           gethomepage.dev/widget.type: "radarr"
           gethomepage.dev/widget.url: "https://radarr.${SECRET_DOMAIN}"
