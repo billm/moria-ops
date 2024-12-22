@@ -104,6 +104,7 @@ spec:
           gethomepage.dev/widget.type: "readarr"
           gethomepage.dev/widget.url: "https://readarr.${SECRET_DOMAIN}"
           gethomepage.dev/widget.key: "{{`{{READARR__AUTH__APIKEY}}`}}"
+          gethomepage.dev/widget.enableQueue: "true"
         hosts:
           - host: readarr.${SECRET_DOMAIN}
             paths:
