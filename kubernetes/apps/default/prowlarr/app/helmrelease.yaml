@@ -98,7 +98,7 @@ spec:
           gethomepage.dev/icon: "sh-prowlarr"
           gethomepage.dev/widget.type: "prowlarr"
           gethomepage.dev/widget.url: "https://prowlarr.${SECRET_DOMAIN}"
-          gethomepage.dev/widget.key: "{{PROWLARR__AUTH__APIKEY}}"
+          gethomepage.dev/widget.key: "{{`{{PROWLARR__AUTH__APIKEY}}`}}"
         className: internal
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
