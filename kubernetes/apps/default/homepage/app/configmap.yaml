@@ -48,7 +48,6 @@ data:
     mode: cluster
   services.yaml: |
     - Applications:
-      - Home:
       - Network:
         - Cloudflared:
             href: https://dash.cloudflare.com/
@@ -60,12 +59,6 @@ data:
               tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
               key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
               fields: ["status"]
-      - Media:
-      - Observability:
-    - Other Services:
-      - Management:
-      - Game Servers:
-      - Downloads:
 
   settings.yaml: |
     title: Dashboard

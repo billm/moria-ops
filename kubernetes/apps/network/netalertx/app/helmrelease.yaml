@@ -62,6 +62,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
+          gethomepage.dev/parent: Applications
           gethomepage.dev/group: Network
           gethomepage.dev/name: "NetAlertX"
           gethomepage.dev/description: "Network monitoring tool."
