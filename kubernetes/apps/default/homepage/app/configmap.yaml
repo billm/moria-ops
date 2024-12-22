@@ -48,6 +48,7 @@ data:
     mode: cluster
   services.yaml: |
     - Applications:
+      - Home:
       - Network:
         - Cloudflared:
             href: https://dash.cloudflare.com/
@@ -59,64 +60,13 @@ data:
               tunnelid: {{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}
               key: {{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}
               fields: ["status"]
-        # - Healthchecks:
-        #     href: https://healthchecks.io/
-        #     icon: healthchecks.png
-        #     description: Healthchecks Internet Uptime
-        #     widget:
-        #       type: healthchecks
-        #       url: https://healthchecks.io/
-        #       key: {{HOMEPAGE_VAR_HEALTHCHECK_TOKEN}}
-        #       uuid: {{HOMEPAGE_VAR_HEALTHCHECK_UUID}}
-        # - Unifi:
-        #     href: https://unifi.ui.com
-        #     icon: unifi.png
-        #     description: Unifi Dashboard
-        #     widget:
-        #       type: unifi
-        #       url: https://unifi.${SECRET_DOMAIN}
-        #       username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
-        #       password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
+      - Media:
+      - Observability:
+    - Other Services:
+      - Management:
+      - Game Servers:
+      - Downloads:
 
-    # - Calendar:
-    #     - Agenda:
-    #         widget:
-    #           type: calendar
-    #           view: agenda # optional - possible values monthly, agenda
-    #           maxEvents: 15 # optional - defaults to 10
-    #           integrations: # optional
-    #             - type: sonarr # active widget type that is currently enabled on homepage - possible values: radarr, sonarr>
-    #               service_group: Downloads # group name where widget exists
-    #               service_name: Sonarr # service name for that widget
-    #             - type: radarr # active widget type that is currently enabled on homepage - possible values: radarr, sonarr>
-    #               service_group: Downloads # group name where widget exists
-    #               service_name: Radarr # service name for that widget
-    #             - type: readarr # active widget type that is currently enabled on homepage - possible values: radarr, sonar>
-    #               service_group: Downloads # group name where widget exists
-    #               service_name: Readarr # service name for that widget
-    # - Infrastructure:
-    #     - Portainer:
-    #         href: &url https://portainer.${SECRET_DOMAIN}
-    #         icon: portainer.png
-    #         description: Docker Container Management
-    #         widget:
-    #           type: portainer
-    #           url: http://voyager.internal:9090
-    #           env: 1
-    #           key: {{HOMEPAGE_VAR_PORTAINER_TOKEN}}
-    #     - Unraid:
-    #         href: https://nas.${SECRET_DOMAIN}
-    #         icon: unraid.png
-    #         description: Unraid NAS
-    # - Home:
-    #     - Home-Assistant:
-    #         href: https://hass.${SECRET_DOMAIN}
-    #         icon: home-assistant.png
-    #         description: Home Automation Software
-    #         widget:
-    #           type: homeassistant
-    #           url: https://hass.${SECRET_DOMAIN}
-    #           key: {{HOMEPAGE_VAR_HASS_TOKEN}}
   settings.yaml: |
     title: Dashboard
     # favicon: https://github.com/walkxcode/dashboard-icons/blob/main/png/heimdall.png
