@@ -76,7 +76,8 @@ data:
       hideVisitURL: true
     layout:
       Home:
-        style: column
+        style: row
+        columns: 5
         icon: mdi-home-analytics
       Media:
         style: column
