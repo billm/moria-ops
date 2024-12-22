@@ -222,15 +222,15 @@ data:
         style: row
         columns: 3
         icon: mdi-server
+        header: true
         Management:
           style: column
           icon: mdi-cog
         Game Servers:
           style: column
-          icon: mdi-minecraft
+          icon: mdi-space-invaders
         Downloads:
-          style: row
-          columns: 3
+          style: column
           icon: mdi-download-circle
       Calendar:
         style: column
