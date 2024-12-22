@@ -102,7 +102,7 @@ spec:
           gethomepage.dev/icon: "sh-sonarr"
           gethomepage.dev/widget.type: "sonarr"
           gethomepage.dev/widget.url: "https://sonarr.${SECRET_DOMAIN}"
-          gethomepage.dev/widget.key: "{{`{{SONARR__AUTH__APIKEY}}`}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_TOKEN}}`}}"
           gethomepage.dev/widget.enableQueue: "true"
         className: internal
         hosts:

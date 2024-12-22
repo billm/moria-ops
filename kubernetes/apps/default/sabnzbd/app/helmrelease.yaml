@@ -98,7 +98,7 @@ spec:
           gethomepage.dev/icon: "sh-sabnzbd"
           gethomepage.dev/widget.type: "sabnzbd"
           gethomepage.dev/widget.url: "https://sabnzbd.${SECRET_DOMAIN}"
-          gethomepage.dev/widget.key: "{{`{{SABNZBD__NZB_KEY}}`}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_TOKEN}}`}}"
         className: internal
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"

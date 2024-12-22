@@ -102,7 +102,7 @@ spec:
           gethomepage.dev/icon: "sh-radarr"
           gethomepage.dev/widget.type: "radarr"
           gethomepage.dev/widget.url: "https://radarr.${SECRET_DOMAIN}"
-          gethomepage.dev/widget.key: "{{`{{RADARR__AUTH__APIKEY}}`}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_RADARR_TOKEN}}`}}"
           gethomepage.dev/widget.enableQueue: "true"
         className: internal
         hosts:

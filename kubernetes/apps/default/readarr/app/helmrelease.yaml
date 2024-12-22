@@ -103,7 +103,7 @@ spec:
           gethomepage.dev/icon: "sh-readarr"
           gethomepage.dev/widget.type: "readarr"
           gethomepage.dev/widget.url: "https://readarr.${SECRET_DOMAIN}"
-          gethomepage.dev/widget.key: "{{`{{READARR__AUTH__APIKEY}}`}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_READARR_TOKEN}}`}}"
           gethomepage.dev/widget.enableQueue: "true"
         hosts:
           - host: readarr.${SECRET_DOMAIN}
