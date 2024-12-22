@@ -36,6 +36,9 @@ spec:
       dashboard:
         annotations:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: "Storage"
+          gethomepage.dev/name: "Rook Dashboard"
         ingressClassName: internal
         host:
           name: rook.${SECRET_DOMAIN}

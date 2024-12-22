@@ -71,8 +71,8 @@ spec:
         className: external
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: Home
-          gethomepage.dev/name: Redlib
+          gethomepage.dev/group: "Home"
+          gethomepage.dev/name: "Redlib"
           gethomepage.dev/icon: https://raw.githubusercontent.com/redlib-org/redlib/main/static/logo.svg
           gethomepage.dev/description: Reddit private front end
           external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}

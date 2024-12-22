@@ -54,6 +54,10 @@ spec:
           enabled: true
           className: internal
           hosts: ["hubble.${SECRET_DOMAIN}"]
+          annotations:
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: "Network"
+            gethomepage.dev/name: "Hubble UI"
     operator:
       prometheus:
         enabled: true
