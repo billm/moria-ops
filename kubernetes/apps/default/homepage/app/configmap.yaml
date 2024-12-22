@@ -48,9 +48,7 @@ data:
     mode: cluster
   services.yaml: |
     - Network:
-      style: column
-      icon: mdi-network
-      Cloudflared:
+      - Cloudflared:
         href: https://dash.cloudflare.com/
         icon: cloudflare-zero-trust.png
         description: Cloudflared Tunnel Status
@@ -77,35 +75,27 @@ data:
       showSearchSuggestions: true
       hideVisitURL: true
     layout:
-      Applications:
-        style: row
-        columns: 4
-        Home:
-          style: column
-          icon: mdi-home-analytics
-        Media:
-          style: column
-          icon: mdi-play-circle
-        Network:
-          style: column
-          icon: mdi-network
-        Observability:
-          style: column
-          icon: mdi-chart-line
-      Other Services:
-        style: row
-        columns: 3
-        icon: mdi-server
-        header: true
-        Management:
-          style: column
-          icon: mdi-cog
-        Game Servers:
-          style: column
-          icon: mdi-space-invaders
-        Downloads:
-          style: column
-          icon: mdi-download-circle
+      Home:
+        style: column
+        icon: mdi-home-analytics
+      Media:
+        style: column
+        icon: mdi-play-circle
+      Network:
+        style: column
+        icon: mdi-network
+      Observability:
+        style: column
+        icon: mdi-chart-line
+      Management:
+        style: column
+        icon: mdi-cog
+      Game Servers:
+        style: column
+        icon: mdi-space-invaders
+      Downloads:
+        style: column
+        icon: mdi-download-circle
   widgets.yaml: |
     - logo:
         icon: https://raw.githubusercontent.com/joryirving/home-ops/main/docs/src/assets/icons/lds-transparent.png
