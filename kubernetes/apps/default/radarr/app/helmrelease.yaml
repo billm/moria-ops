@@ -97,8 +97,8 @@ spec:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
           gethomepage.dev/name: "Radarr"
-          gethomepage.dev/group: "Media"
-          gethomepage.dev/description: "Movie Downloader"
+          gethomepage.dev/group: "Downloads"
+          gethomepage.dev/description: "Movie Collection Manager"
           gethomepage.dev/href: "https://radarr.${SECRET_DOMAIN}"
           gethomepage.dev/icon: "sh-radarr"
           gethomepage.dev/widget.type: "radarr"

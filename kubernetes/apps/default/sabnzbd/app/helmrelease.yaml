@@ -93,7 +93,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
           gethomepage.dev/name: "SABnzbd"
-          gethomepage.dev/group: "Media"
+          gethomepage.dev/group: "Downloads"
           gethomepage.dev/description: "Usenet Downloader"
           gethomepage.dev/icon: "sh-sabnzbd"
           gethomepage.dev/href: "https://sabnzbd.${SECRET_DOMAIN}"

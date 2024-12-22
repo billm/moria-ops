@@ -93,7 +93,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
           gethomepage.dev/name: "Prowlarr"
-          gethomepage.dev/group: "Media"
+          gethomepage.dev/group: "Downloads"
           gethomepage.dev/description: "Usenet Indexer"
           gethomepage.dev/href: "https://prowlarr.${SECRET_DOMAIN}"
           gethomepage.dev/icon: "sh-prowlarr"

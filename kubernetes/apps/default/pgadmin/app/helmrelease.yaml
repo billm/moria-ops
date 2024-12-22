@@ -83,7 +83,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: Services
+          gethomepage.dev/group: Management
           gethomepage.dev/name: *app
           gethomepage.dev/description: "Web-based PostgreSQL administration tool"
           gethomepage.dev/href: "https://pgadmin.${SECRET_DOMAIN}"

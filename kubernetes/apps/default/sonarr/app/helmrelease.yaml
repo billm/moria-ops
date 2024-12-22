@@ -97,8 +97,8 @@ spec:
           external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
           gethomepage.dev/name: "Sonarr"
-          gethomepage.dev/group: "Media"
-          gethomepage.dev/description: "TV Shows"
+          gethomepage.dev/group: "Downloads"
+          gethomepage.dev/description: "TV Show Collection Manager"
           gethomepage.dev/icon: "sh-sonarr"
           gethomepage.dev/href: "https://sonarr.${SECRET_DOMAIN}"
           gethomepage.dev/widget.type: "sonarr"

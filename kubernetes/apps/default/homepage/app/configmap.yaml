@@ -202,40 +202,43 @@ data:
       showSearchSuggestions: true
       hideVisitURL: true
     layout:
-      Network:
-        style: row
-        columns: 3
-        icon: mdi-network
-      Games:
-        style: row
-        columns: 3
-        icon: mdi-minecraft
-      Calendar:
-        style: column
-        icon: mdi-calendar
-      Video:
-        style: column
-        icon: mdi-play-circle
-      Books:
-        style: row
-        columns: 2
-        icon: mdi-book
-      Infrastructure:
-        style: row
-        columns: 5
-        icon: mdi-server
-      Observability:
-        style: row
-        columns: 5
-        icon: mdi-chart-line
       Home:
         style: row
         columns: 5
         icon: mdi-home-analytics
-      Downloads:
+      Media:
+        style: row
+        columns: 5
+        icon: mdi-play-circle
+      Network:
+        style: row
+        columns: 5
+        icon: mdi-network
+      Observability:
+        style: row
+        columns: 5
+        icon: mdi-chart-line
+      Services:
         style: row
         columns: 3
-        icon: mdi-download-circle
+        icon: mdi-server
+        Management:
+          style: column
+          icon: mdi-cog
+        Game Servers:
+          style: column
+          icon: mdi-minecraft
+        Downloads:
+          style: row
+          columns: 3
+          icon: mdi-download-circle
+      Calendar:
+        style: column
+        icon: mdi-calendar
+      Books:
+        style: row
+        columns: 2
+        icon: mdi-book
   widgets.yaml: |
     - logo:
         icon: https://raw.githubusercontent.com/joryirving/home-ops/main/docs/src/assets/icons/lds-transparent.png
