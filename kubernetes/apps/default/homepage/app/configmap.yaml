@@ -20,7 +20,7 @@ data:
       - Outlook:
         - icon: https://raw.githubusercontent.com/joryirving/home-ops/main/docs/src/assets/icons/outlook.png
           href: 'https://outlook.com'
-    - Media:
+    - Online Media:
       - YouTube:
         - icon: youtube.png
           href: 'https://youtube.com/feed/subscriptions'
@@ -76,77 +76,7 @@ data:
         #       url: https://unifi.${SECRET_DOMAIN}
         #       username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
         #       password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
-    # - Media:
-    #   - Bazarr:
-    #       icon: bazarr.png
-    #       href: https://bazarr.${SECRET_DOMAIN}
-    #       description: Subtitles Management
-    #       widget:
-    #         type: bazarr
-    #         url: http://bazarr.default.svc.cluster.local:6767
-    #         key: {{HOMEPAGE_VAR_BAZARR_TOKEN}}
-    #   - Prowlarr:
-    #       href: https://prowlarr.${SECRET_DOMAIN}
-    #       icon: prowlarr.png
-    #       description: Movies
-    #       widget:
-    #         type: prowlarr
-    #         url: http://prowlarr.default.svc.cluster.local:80
-    #         key: {{HOMEPAGE_VAR_PROWLARR_TOKEN}}
-    #   - Radarr:
-    #       href: https://radarr.${SECRET_DOMAIN}
-    #       icon: radarr.png
-    #       description: Movies
-    #       widget:
-    #         type: radarr
-    #         url: http://radarr.default.svc.cluster.local:80
-    #         key: {{HOMEPAGE_VAR_RADARR_TOKEN}}
-    #         enableQueue: true
-    #   - Readarr:
-    #       href: https://readarr.${SECRET_DOMAIN}
-    #       icon: readarr.png
-    #       description: Books
-    #       widget:
-    #         type: readarr
-    #         url: http://readarr.default.svc.cluster.local:8787
-    #         key: {{HOMEPAGE_VAR_READARR_TOKEN}}
-    #   - SABnzbd:
-    #       href: https://sabnzbd.${SECRET_DOMAIN}
-    #       icon: sabnzbd.png
-    #       description: Usenet Downloader
-    #       widget:
-    #         type: sabnzbd
-    #         url: http://sabnzbd.default.svc.cluster.local:80
-    #         key: {{HOMEPAGE_VAR_SABNZBD_TOKEN}}
-    #   - Sonarr:
-    #       href: https://sonarr.${SECRET_DOMAIN}
-    #       icon: sonarr.png
-    #       description: TV Shows
-    #       widget:
-    #         type: sonarr
-    #         url: http://sonarr.default.svc.cluster.local:80
-    #         key: {{HOMEPAGE_VAR_SONARR_TOKEN}}
-    #         enableQueue: true
 
-    # - Games:
-    #     - Create:
-    #         icon: minecraft.png
-    #         description: Create Server
-    #         widget:
-    #           type: minecraft
-    #           url: udp://minecraft-create-minecraft.games:25565
-    #     - Takocraft:
-    #         icon: minecraft.png
-    #         description: Takocraft Server
-    #         widget:
-    #           type: minecraft
-    #           url: udp://minecraft-takocraft-minecraft.games:25565
-    #     - Vibecraft:
-    #         icon: minecraft.png
-    #         description: Vibecraft Server
-    #         widget:
-    #           type: minecraft
-    #           url: udp://minecraft-vibecraft-minecraft.games:25565
     # - Calendar:
     #     - Agenda:
     #         widget:
@@ -232,13 +162,6 @@ data:
         Downloads:
           style: column
           icon: mdi-download-circle
-      Calendar:
-        style: column
-        icon: mdi-calendar
-      Books:
-        style: row
-        columns: 2
-        icon: mdi-book
   widgets.yaml: |
     - logo:
         icon: https://raw.githubusercontent.com/joryirving/home-ops/main/docs/src/assets/icons/lds-transparent.png
