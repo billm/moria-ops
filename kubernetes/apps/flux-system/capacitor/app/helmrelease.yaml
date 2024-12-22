@@ -65,6 +65,7 @@ spec:
           gethomepage.dev/group: "Services"
           gethomepage.dev/name: "Capacitor"
           gethomepage.dev/href: "https://capacitor.${SECRET_DOMAIN}"
+          gethomepage.dev/icon: si-capacitor
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:

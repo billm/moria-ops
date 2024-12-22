@@ -85,6 +85,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: "Network"
           gethomepage.dev/name: "Echo Server"
+          gethomepage.dev/icon: si-codemirror
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:

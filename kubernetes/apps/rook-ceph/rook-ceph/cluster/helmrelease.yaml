@@ -39,6 +39,8 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: "Storage"
           gethomepage.dev/name: "Rook Dashboard"
+          gethomepage.dev/pod-selector: app.kubernetes.io/name=ceph-mgr
+          gethomepage.dev/icon: si-ceph
         ingressClassName: internal
         host:
           name: rook.${SECRET_DOMAIN}

@@ -109,7 +109,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home
           gethomepage.dev/name: *app
-          gethomepage.dev/icon: https://github.com/hoarder-app/hoarder/blob/main/apps/web/public/icons/logo-128.png
+          gethomepage.dev/icon: sh-hoarder.png
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
