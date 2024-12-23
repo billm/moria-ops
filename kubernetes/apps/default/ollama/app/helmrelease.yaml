@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: docker.io/ollama/ollama
-              tag: 0.5.1-rocm
+              tag: 0.5.4-rocm
             env:
               TZ: ${CONFIG_TIMEZONE}
               HSA_OVERRIDE_GFX_VERSION: 11.0.0
