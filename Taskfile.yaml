@@ -31,6 +31,7 @@ includes:
   talos: .taskfiles/Talos
   sops: .taskfiles/Sops
   workstation: .taskfiles/Workstation
+  github: .taskfiles/Github
   user:
     taskfile: .taskfiles/User
     optional: true

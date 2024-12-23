@@ -1,0 +1,73 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  clone-directory:
+   # task github:clone-directory github_repo="username/repo" remote_dir="kubernetes/main/apps/default/appname" local_dir="kubernetes/main/apps/default"
+    desc: "Clone the repository, copy the desired directory, and clean up"
+    requires:
+      vars: ["github_repo", "remote_dir", "local_dir"]
+    preconditions:
+      # --- Validation for ----
+      # Ensure 'github_repo' matches the format "owner/repo"
+      - sh: 'echo "{{.github_repo}}" | grep -Eq "^[a-zA-Z0-9._-]+/[a-zA-Z0-9._-]+$"'
+        msg: "'github_repo' must match the format 'owner/repo' (e.g., 'octocat/Hello-World')."
+
+      # --- Validation for remote_dir ---
+      # Ensure 'remote_dir' is not empty
+      - sh: '[ ! -z "{{.remote_dir}}" ]'
+        msg: "'remote_dir' cannot be empty."
+      # Ensure 'remote_dir' does not contain path traversal
+      - sh: ! 'echo "{{.remote_dir}}" | grep -q "\.\." && exit 1 || exit 0'
+        msg: "'remote_dir' cannot contain path traversal (e.g., '../')."
+      - sh: '[ ! -z "{{.local_dir}}" ]'
+        msg: "The 'local_dir' variable is required and cannot be empty."
+
+      # --- Validation for local_dir ---
+      # Ensure 'local_dir' is not empty
+      - sh: '[ ! -z "{{.local_dir}}" ]'
+        msg: "'local_dir' cannot be empty."
+      # Ensure 'local_dir' is a valid relative path, without leading slashes or traversal
+      - sh: ! 'echo "{{.local_dir}}" | grep -Eq "^[^/][^:~]*$" && echo "{{.local_dir}}" | grep -q "\.\." && exit 1 || exit 0'
+        msg: "'local_dir' must be a valid relative directory path (no leading '/', '../', '~', or special characters)."
+      # Ensure the parent of 'local_dir' exists
+      - sh: '[ -d "$(dirname {{.local_dir}})" ]'
+        msg: "The parent directory of 'local_dir' must already exist."
+
+    cmds:
+      - |
+        # Extract only the final component of the remote_dir (e.g. appname from "kubernetes/main/apps/default/appname")
+        final_dir=$(basename "{{.remote_dir}}")
+        echo "Extracting final directory: $final_dir"
+
+        # Create a temporary directory for cloning the repository
+        tmp_dir=$(mktemp -d)
+
+        # Clone just the repository (without the full history) into the temporary directory
+        echo "Cloning repository into temporary directory: $tmp_dir"
+        git clone --depth 1 --filter=blob:none --sparse "https://github.com/{{.github_repo}}.git" "$tmp_dir"
+
+        # Navigate to the temporary directory
+        cd "$tmp_dir"
+
+        # Enable sparse checkout and specify the directory you want
+        git sparse-checkout set "{{.remote_dir}}"
+        echo "Sparse-checkout complete: {{.remote_dir}}"
+
+        # Check that the final directory exists after checkout (fail if not)
+        if [ ! -d "{{.remote_dir}}" ]; then
+          echo "Error: The directory '{{.remote_dir}}' does not exist in the repository."
+          exit 1
+        fi
+
+        # Copy the contents of the directory to the local path
+        cd -
+        mkdir -p "{{.local_dir}}"
+        cp -r "$tmp_dir/{{.remote_dir}}" "{{.local_dir}}/"
+
+        # Cleanup: Remove the temporary directory
+        rm -rf "$tmp_dir"
+
+        # Confirmation message
+        echo "Final directory '$final_dir' from '{{.github_repo}}' has been copied to '{{.local_dir}}'."
