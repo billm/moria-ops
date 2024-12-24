@@ -14,7 +14,7 @@ spec:
     - name: external-secrets-stores
     - name: volsync
     - name: rook-ceph-cluster
-  path: ./kubernetes/main/apps/default/librechat/app
+  path: ./kubernetes/apps/default/librechat/app
   prune: true
   sourceRef:
     kind: GitRepository
