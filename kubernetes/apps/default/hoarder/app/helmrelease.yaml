@@ -81,6 +81,7 @@ spec:
               - --remote-debugging-address=0.0.0.0
               - --remote-debugging-port=9222
               - --hide-scrollbars
+              - --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb
             resources:
               requests:
                 cpu: 50m
@@ -121,6 +122,11 @@ spec:
                   identifier: app
                   port: http
     persistence:
+      tmp:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
       config:
         existingClaim: hoarder
         advancedMounts:
