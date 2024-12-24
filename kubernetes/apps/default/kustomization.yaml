@@ -11,6 +11,7 @@ resources:
   - ./homepage/ks.yaml
   - ./kavita/ks.yaml
 #  - ./lazylibrarian/ks.yaml
+  - ./librechat/ks.yaml
   - ./n8n/ks.yaml
   - ./ollama/ks.yaml
   - ./overseerr/ks.yaml

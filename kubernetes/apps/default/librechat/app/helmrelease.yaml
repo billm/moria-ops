@@ -1,0 +1,256 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app librechat
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      librechat:
+        type: deployment
+        annotations:
+          reloader.stakater.com/auto: "true"
+          secret.reloader.stakater.com/reload: &secret librechat-secret
+          configmap.reloader.stakater.com/reload: &configMap librechat-configmap
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: *secret
+              - configMapRef:
+                  name: *configMap
+        containers:
+          app:
+            image:
+              repository: ghcr.io/danny-avila/librechat-dev
+              tag: latest@sha256:535befea095189d650a03095bf7e9c17325110f91ddf75343deeb4714265b4b7
+            env:
+              PORT: "3080"
+              NODE_ENV: "development"
+              MONGO_URI: &mongo "mongodb://librechat-mongodb:27017/LibreChat"
+
+
+            dependsOn:
+              - mongodb
+              - meilisearch
+              - ragapi
+
+            envFrom: *envFrom
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities: { drop: ["ALL"] }
+              runAsUser: 1000
+              runAsGroup: 1000
+              fsGroup: 1000
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 1000Mi
+            probes: &probes
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: false
+
+          exporter:
+            dependsOn: app
+            image:
+              repository: ghcr.io/wipash/librechatmetrics
+              tag: latest
+            env:
+              MONGODB_URI: *mongo
+              PROMETHEUS_PORT: &exporterport "9123"
+
+          ragapi:
+            image:
+              repository: ghcr.io/danny-avila/librechat-rag-api-dev-lite
+              tag: latest@sha256:a6b4babf521ff8bfbe4bdbf3a4362acb94586fc99fed79eb05e1fa42c1e869e1
+            envFrom: *envFrom
+            securityContext: &securityContext
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            probes: *probes
+
+          meilisearch:
+            image:
+              repository: getmeili/meilisearch
+              tag: v1.10.3
+            envFrom: *envFrom
+            env:
+              MEILI_DB_PATH: "/meili_data"
+              MEILI_NO_ANALYTICS: "true"
+            securityContext: *securityContext
+            probes: *probes
+
+          mongodb:
+            image:
+              repository: mongo
+              tag: 7.0.15@sha256:8958f43a940142d2a4572bb4d4f147ab26994a3da1cead6d39876b96451a4f1a
+            command: ["mongod", "--noauth"]
+            securityContext: *securityContext
+            probes: *probes
+
+          mongo-express:
+            image:
+              repository: mongo-express
+              tag: 1.0.2@sha256:1b23d7976f0210dbec74045c209e52fbb26d29b2e873d6c6fa3d3f0ae32c2a64
+            env:
+              ME_CONFIG_MONGODB_URL: *mongo
+              PORT: 8081
+            envFrom: *envFrom
+            securityContext: *securityContext
+            probes: *probes
+
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: { type: RuntimeDefault }
+
+    service:
+      app:
+        controller: librechat
+        ports:
+          http:
+            port: 3080
+          metrics:
+            port: *exporterport
+      mongo-express:
+        controller: librechat
+        ports:
+          http:
+            port: 8081
+      meilisearch:
+        controller: librechat
+        ports:
+          http:
+            port: 7700
+      ragapi:
+        controller: librechat
+        ports:
+          http:
+            port: 8000
+
+    ingress:
+      app:
+        enabled: true
+        className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: *app
+          gethomepage.dev/icon: https://raw.githubusercontent.com/danny-avila/LibreChat/refs/heads/main/client/public/assets/logo.svg
+          gethomepage.dev/description: "AI Chat"
+          gethomepage.dev/href: "https://chat.${SECRET_DOMAIN}"
+        hosts:
+          - host: &host chat.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+      mongo-express:
+        enabled: true
+        className: internal
+        hosts:
+          - host: mongolibre.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: mongo-express
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: librechat-config
+        advancedMounts:
+          librechat:
+            app:
+              - subPath: librechat.yaml
+                path: /app/librechat.yaml
+
+      app-data:
+        enabled: true
+        type: emptyDir
+        advancedMounts:
+          librechat:
+            app:
+              - path: /app/data
+              - path: /app/api/data
+
+      tmp:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+
+      data:
+        enabled: true
+        existingClaim: librechat
+        advancedMounts:
+          librechat:
+            app:
+              - subPath: logs
+                path: /app/api/logs
+              - subPath: images
+                path: /app/client/public/images
+              - subPath: uploads
+                path: /app/uploads
+            mongodb:
+              - subPath: mongodb
+                path: /data/db
+            meilisearch:
+              - subPath: meilisearch
+                path: /meili_data
+            ragapi:
+              - subPath: ragapi
+                path: /app/uploads
+
+    serviceMonitor:
+      app:
+        serviceName: librechat
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /
+            interval: 1m
+            scrapeTimeout: 30s
