@@ -12,13 +12,13 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: external-secrets-stores
+    - name: cloudnative-pg
     - name: volsync
-    - name: rook-ceph-cluster
   path: ./kubernetes/apps/default/librechat/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-cluster
+    name: home-kubernetes
   wait: false
   interval: 30m
   retryInterval: 1m
