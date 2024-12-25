@@ -147,6 +147,11 @@ spec:
             port: 3080
           metrics:
             port: *exporterport
+      mongodb:
+        controller: librechat
+        ports:
+          http:
+            port: 27017
       mongo-express:
         controller: librechat
         ports:
