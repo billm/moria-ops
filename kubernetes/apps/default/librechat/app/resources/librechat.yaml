@@ -16,14 +16,14 @@ interface:
   presets: false
   prompts: true
   bookmarks: true
-  multiConvo: true
+  multiConvo: false
   agents: true
 
 # Example Registration Object Structure (optional)
-registration:
+# registration:
   # socialLogins: ["openid"]
-  allowedDomains:
-  - "gmail.com"
+  # allowedDomains:
+  # - "gmail.com"
 
 speech:
   speechTab:
