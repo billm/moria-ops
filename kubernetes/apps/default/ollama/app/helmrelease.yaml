@@ -71,14 +71,14 @@ spec:
           main:
             image:
               repository: ghcr.io/open-webui/open-webui
-              tag: 0.4.8
+              tag: 0.5.0
             env:
               WEBUI_NAME: Open WebUI Chat
               WEBUI_URL: https://chatgpt.${SECRET_DOMAIN}
               DATA_DIR: /data
               OLLAMA_BASE_URL: http://ollama-backend.default.svc.cluster.local:11434
               RAG_EMBEDDING_ENGINE: ollama
-            envFrom: 
+            envFrom:
               - secretRef:
                   name: openwebui-secret
             resources:
