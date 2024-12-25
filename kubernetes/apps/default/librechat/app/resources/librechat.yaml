@@ -9,7 +9,7 @@ cache: true
 
 # Custom interface configuration
 interface:
-  endpointsMenu: false
+  endpointsMenu: true
   modelSelect: false
   parameters: false
   sidePanel: true
