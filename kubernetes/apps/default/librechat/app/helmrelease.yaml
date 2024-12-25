@@ -51,15 +51,12 @@ spec:
             env:
               PORT: "3080"
               NODE_ENV: "development"
-              MONGO_URI: &mongo "mongodb://librechat-mongodb.default.svc.cluster.local:27017/LibreChat"
-
-
+              MONGO_URI: &mongo "mongodb://librechat-mongodb.default.svc.cluster.local:27017/LibreChat?ssl=false"
+            envFrom: *envFrom
             dependsOn:
               - mongodb
               - meilisearch
               - ragapi
-
-            envFrom: *envFrom
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
@@ -72,11 +69,13 @@ spec:
                 cpu: 10m
               limits:
                 memory: 1000Mi
-            probes: &probes
+            probes:
               liveness:
                 enabled: true
+                port: 3080
               readiness:
                 enabled: true
+                port: 3080
               startup:
                 enabled: false
 
@@ -98,7 +97,15 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
-            probes: *probes
+            probes:
+              liveness:
+                enabled: true
+                port: 8000
+              readiness:
+                enabled: true
+                port: 8000
+              startup:
+                enabled: false
 
           meilisearch:
             image:
@@ -109,7 +116,15 @@ spec:
               MEILI_DB_PATH: "/meili_data"
               MEILI_NO_ANALYTICS: "true"
             securityContext: *securityContext
-            probes: *probes
+            probes:
+              liveness:
+                enabled: true
+                port: 7700
+              readiness:
+                enabled: true
+                port: 7700
+              startup:
+                enabled: false
 
           mongodb:
             image:
@@ -117,7 +132,15 @@ spec:
               tag: 7.0.15@sha256:8958f43a940142d2a4572bb4d4f147ab26994a3da1cead6d39876b96451a4f1a
             command: ["mongod", "--noauth", "--bind_ip_all"]
             securityContext: *securityContext
-            probes: *probes
+            probes:
+              liveness:
+                enabled: true
+                port: 27017
+              readiness:
+                enabled: true
+                port: 27017
+              startup:
+                enabled: false
 
           mongo-express:
             image:
@@ -127,8 +150,18 @@ spec:
               ME_CONFIG_MONGODB_URL: *mongo
               PORT: 8081
             envFrom: *envFrom
+            dependsOn:
+              - mongodb
             securityContext: *securityContext
-            probes: *probes
+            probes:
+              liveness:
+                enabled: true
+                port: 8081
+              readiness:
+                enabled: true
+                port: 8081
+              startup:
+                enabled: false
 
     defaultPodOptions:
       securityContext:
