@@ -51,7 +51,7 @@ spec:
             env:
               PORT: "3080"
               NODE_ENV: "development"
-              MONGO_URI: &mongo "mongodb://librechat-mongodb:27017/LibreChat"
+              MONGO_URI: &mongo "mongodb://librechat-mongodb.default.svc.cluster.local:27017/LibreChat"
 
 
             dependsOn:
@@ -208,7 +208,7 @@ spec:
       init-db:
         enabled: true
         type: configMap
-        name: librechat-configmap
+        name: librechat-initdb
         advancedMounts:
           librechat:
             init-db:

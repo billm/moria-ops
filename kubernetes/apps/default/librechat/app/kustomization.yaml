@@ -11,5 +11,8 @@ configMapGenerator:
   - name: librechat-config
     files:
       - ./resources/librechat.yaml
+  - name: librechat-initdb
+    files:
+      - ./resources/librechat.sql
 generatorOptions:
   disableNameSuffixHash: true
