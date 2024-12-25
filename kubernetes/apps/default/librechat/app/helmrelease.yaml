@@ -71,10 +71,10 @@ spec:
                 memory: 1000Mi
             probes:
               liveness:
-                enabled: true
+                enabled: false
                 port: 3080
               readiness:
-                enabled: true
+                enabled: false
                 port: 3080
               startup:
                 enabled: false
@@ -155,10 +155,10 @@ spec:
             securityContext: *securityContext
             probes:
               liveness:
-                enabled: true
+                enabled: false
                 port: 8081
               readiness:
-                enabled: true
+                enabled: false
                 port: 8081
               startup:
                 enabled: false
