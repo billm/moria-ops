@@ -42,6 +42,7 @@ spec:
                   name: *secret
               - configMapRef:
                   name: *configMap
+
         containers:
           app:
             image:
@@ -205,9 +206,13 @@ spec:
         name: librechat-config
         advancedMounts:
           librechat:
+            init-db:
+              - subPath: librechat.sql
+                path: /initdb/librechat.sql
             app:
               - subPath: librechat.yaml
                 path: /app/librechat.yaml
+
 
       app-data:
         enabled: true
