@@ -200,15 +200,22 @@ spec:
               - *host
 
     persistence:
+      init-db:
+        enabled: true
+        type: configMap
+        name: librechat-configmap
+        advancedMounts:
+          librechat:
+            init-db:
+              - subPath: librechat.sql
+                path: /initdb/librechat.sql
+
       config:
         enabled: true
         type: configMap
         name: librechat-config
         advancedMounts:
           librechat:
-            init-db:
-              - subPath: librechat.sql
-                path: /initdb/librechat.sql
             app:
               - subPath: librechat.yaml
                 path: /app/librechat.yaml
