@@ -15,7 +15,7 @@ spec:
     - name: cloudnative-pg
     - name: volsync
   path: ./kubernetes/apps/default/librechat/app
-  prune: true
+  prune: false # Should be set back to true after migration
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
