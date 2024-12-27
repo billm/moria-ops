@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: "./kubernetes/apps/kube-system/node-feature-discovery/app"
+  path: "./kubernetes/moria/apps/kube-system/node-feature-discovery/app"
   prune: false # Should be set back to true after migration
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: "./kubernetes/apps/kube-system/node-feature-discovery/rules"
+  path: "./kubernetes/moria/apps/kube-system/node-feature-discovery/rules"
   prune: false # Should be set back to true after migration
   sourceRef:
     kind: GitRepository
