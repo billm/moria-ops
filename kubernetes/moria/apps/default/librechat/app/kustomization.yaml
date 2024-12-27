@@ -6,7 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./configmap.yaml
-  - ../../../../../templates/volsync
+  - ../../../../../shared/templates/volsync
 configMapGenerator:
   - name: librechat-config
     files:
