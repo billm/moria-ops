@@ -130,10 +130,10 @@ spec:
         existingClaim: plex-cache
         globalMounts:
           - path: /config/Library/Application Support/Plex Media Server/Cache
-      cache-synology:
-        existingClaim: plex-cache-synology
-        globalMounts:
-          - path: /config/Library/Application Support/Plex Media Server/Cache-synology
+      # cache-synology:
+      #   existingClaim: plex-cache-synology
+      #   globalMounts:
+      #     - path: /config/Library/Application Support/Plex Media Server/Cache-synology
       logs:
         type: emptyDir
         globalMounts:
