@@ -63,6 +63,7 @@ spec:
         volumeBindingMode: WaitForFirstConsumer
         parameters:
           protocol: iscsi
+          dsm: ${SECRET_DSM_IP}
           location: '/volume1'
           formatOptions: "-E nodiscard"
           fstype: ext4
@@ -72,6 +73,7 @@ spec:
         volumeBindingMode: WaitForFirstConsumer
         parameters:
           protocol: iscsi
+          dsm: ${SECRET_DSM_IP}
           location: '/volume1'
           formatOptions: "-E nodiscard"
           fstype: ext4
