@@ -12,7 +12,7 @@ spec:
   dependsOn:
     - name: external-dns
   path: ./kubernetes/moria/apps/network/cloudflared/app
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   path: ./kubernetes/moria/apps/flux-system/capacitor/app
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

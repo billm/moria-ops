@@ -13,7 +13,7 @@ spec:
   dependsOn:
     - name: external-secrets-stores
   path: ./kubernetes/moria/apps/default/bazarr/app
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

@@ -13,7 +13,7 @@ spec:
   dependsOn:
     - name: external-secrets-stores
   path: ./kubernetes/moria/apps/database/cloudnative-pg/app
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
@@ -36,7 +36,7 @@ spec:
   dependsOn:
     - name: cloudnative-pg
   path: ./kubernetes/moria/apps/database/cloudnative-pg/cluster
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app amd-device-plugin
   path: ./kubernetes/moria/apps/kube-system/amd-device-plugin/app
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

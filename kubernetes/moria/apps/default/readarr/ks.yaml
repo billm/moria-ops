@@ -14,7 +14,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
-  prune: false # Should be set back to true after migration
+  prune: true
   wait: false
   interval: 30m
   retryInterval: 1m

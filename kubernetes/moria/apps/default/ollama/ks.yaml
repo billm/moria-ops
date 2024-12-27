@@ -14,7 +14,7 @@ spec:
   retryInterval: 1m
   timeout: 5m
   path: "./kubernetes/shared/templates/volsync"
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
@@ -45,7 +45,7 @@ spec:
   retryInterval: 1m
   timeout: 5m
   path: "./kubernetes/shared/templates/volsync"
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
@@ -76,7 +76,7 @@ spec:
   retryInterval: 1m
   timeout: 5m
   path: "./kubernetes/moria/apps/default/ollama/app"
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

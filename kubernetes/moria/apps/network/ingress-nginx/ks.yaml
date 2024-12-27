@@ -12,7 +12,7 @@ spec:
   dependsOn:
     - name: cert-manager-issuers
   path: ./kubernetes/moria/apps/network/ingress-nginx/certificates
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
@@ -34,7 +34,7 @@ spec:
   dependsOn:
     - name: ingress-nginx-certificates
   path: ./kubernetes/moria/apps/network/ingress-nginx/internal
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
@@ -56,7 +56,7 @@ spec:
   dependsOn:
     - name: ingress-nginx-certificates
   path: ./kubernetes/moria/apps/network/ingress-nginx/external
-  prune: false # Should be set back to true after migration
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
