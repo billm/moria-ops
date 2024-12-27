@@ -14,7 +14,7 @@ spec:
     - name: rook-ceph-cluster
     - name: volsync
     - name: external-secrets-stores
-  path: "./kubernetes/apps/network/netalertx/app"
+  path: "./kubernetes/moria/apps/network/netalertx/app"
   prune: false # Should be set back to true after migration
   sourceRef:
     kind: GitRepository

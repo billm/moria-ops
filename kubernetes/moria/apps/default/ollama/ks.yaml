@@ -75,7 +75,7 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
-  path: "./kubernetes/apps/default/ollama/app"
+  path: "./kubernetes/moria/apps/default/ollama/app"
   prune: false # Should be set back to true after migration
   sourceRef:
     kind: GitRepository
