@@ -60,7 +60,7 @@ spec:
       syno-iscsi-delete:
         isDefault: false
         reclaimPolicy: Delete
-        volumeBindingMode: WaitForFirstConsumer
+        volumeBindingMode: Immediate
         parameters:
           protocol: iscsi
           dsm: ${SECRET_DSM_IP}
@@ -70,7 +70,7 @@ spec:
       syno-iscsi-retain:
         isDefault: false
         reclaimPolicy: Retain
-        volumeBindingMode: WaitForFirstConsumer
+        volumeBindingMode: Immediate
         parameters:
           protocol: iscsi
           dsm: ${SECRET_DSM_IP}
