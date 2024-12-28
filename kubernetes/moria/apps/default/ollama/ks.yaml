@@ -23,6 +23,9 @@ spec:
       APP: ollama-backend
       VOLSYNC_CLAIM: ollama-backend-data
       VOLSYNC_CAPACITY: 10Gi
+      VOLSYNC_STORAGECLASS: syno-iscsi-delete
+      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
+      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
     substituteFrom:
       - kind: Secret
         name: flux-volsync-secret
@@ -54,6 +57,9 @@ spec:
       APP: ollama-ui
       VOLSYNC_CLAIM: ollama-ui-data
       VOLSYNC_CAPACITY: 2Gi
+      VOLSYNC_STORAGECLASS: syno-iscsi-delete
+      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
+      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
     substituteFrom:
       - kind: Secret
         name: flux-volsync-secret
