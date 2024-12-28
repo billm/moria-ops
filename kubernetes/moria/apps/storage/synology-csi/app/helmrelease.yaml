@@ -57,7 +57,7 @@ spec:
         tag: v1.1.2
 
     storageClasses:
-      synology-iscsi-delete:
+      syno-iscsi-delete:
         isDefault: false
         reclaimPolicy: Delete
         volumeBindingMode: WaitForFirstConsumer
@@ -67,7 +67,7 @@ spec:
           location: '/volume1'
           formatOptions: "-E nodiscard"
           fstype: ext4
-      synology-iscsi-retain:
+      syno-iscsi-retain:
         isDefault: false
         reclaimPolicy: Retain
         volumeBindingMode: WaitForFirstConsumer
@@ -79,9 +79,9 @@ spec:
           fstype: ext4
 
     volumeSnapshotClasses:
-      synology-iscsi-delete:
+      syno-iscsi-delete:
         isDefault: false
         deletionPolicy: Delete
-      synology-iscsi-retain:
+      syno-iscsi-retain:
         isDefault: false
         deletionPolicy: Retain
