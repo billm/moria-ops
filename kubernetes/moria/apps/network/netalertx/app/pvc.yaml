@@ -56,9 +56,9 @@ spec:
     storageClassName: "syno-iscsi-delete"
     volumeSnapshotClassName: "syno-iscsi-delete"
     moverSecurityContext:
-      runAsUser: ${APP_UID:-2000}
-      runAsGroup: ${APP_GID:-2000}
-      fsGroup: ${APP_GID:-2000}
+      runAsUser: ${APP_UID:-568}
+      runAsGroup: ${APP_GID:-568}
+      fsGroup: ${APP_GID:-568}
     accessModes:
       - "ReadWriteOnce"
     capacity: "5Gi"
@@ -82,9 +82,9 @@ spec:
     storageClassName: "syno-iscsi-delete"
     accessModes: ["ReadWriteOnce"]
     moverSecurityContext:
-      runAsUser: ${APP_UID:-2000}
-      runAsGroup: ${APP_GID:-2000}
-      fsGroup: ${APP_GID:-2000}
+      runAsUser: ${APP_UID:-568}
+      runAsGroup: ${APP_GID:-568}
+      fsGroup: ${APP_GID:-568}
     pruneIntervalDays: 7
     retain:
       daily: 7
