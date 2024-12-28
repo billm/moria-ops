@@ -127,7 +127,7 @@ spec:
         globalMounts:
           - path: /config/Library/Application Support/Plex Media Server
       cache:
-        existingClaim: plex-cache-syno
+        existingClaim: plex-cache
         globalMounts:
           - path: /config/Library/Application Support/Plex Media Server/Cache
       logs:
