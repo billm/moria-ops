@@ -12,7 +12,7 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  storageClassName: ceph-block
+  storageClassName: syno-iscsi-delete
 
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/external-secrets.io/externalsecret_v1beta1.json
@@ -50,11 +50,11 @@ spec:
   restic:
     copyMethod: Snapshot
     repository: "netalertx-db-volsync-r2-secret"
-    cacheStorageClassName: "ceph-block"
+    cacheStorageClassName: "syno-iscsi-delete"
     cacheAccessModes: ["ReadWriteOnce"]
     cacheCapacity: "1Gi"
-    storageClassName: "ceph-block"
-    volumeSnapshotClassName: "csi-ceph-blockpool"
+    storageClassName: "syno-iscsi-delete"
+    volumeSnapshotClassName: "syno-iscsi-delete"
     moverSecurityContext:
       runAsUser: ${APP_UID:-2000}
       runAsGroup: ${APP_GID:-2000}
@@ -75,11 +75,11 @@ spec:
   restic:
     copyMethod: "Snapshot"
     repository: "netalertx-db-volsync-r2-secret"
-    volumeSnapshotClassName: "csi-ceph-blockpool"
+    volumeSnapshotClassName: "syno-iscsi-delete"
     cacheCapacity: "1Gi"
-    cacheStorageClassName: "ceph-block"
+    cacheStorageClassName: "syno-iscsi-delete"
     cacheAccessModes: ["ReadWriteOnce"]
-    storageClassName: "ceph-block"
+    storageClassName: "syno-iscsi-delete"
     accessModes: ["ReadWriteOnce"]
     moverSecurityContext:
       runAsUser: ${APP_UID:-2000}
