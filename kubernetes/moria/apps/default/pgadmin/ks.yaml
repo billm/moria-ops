@@ -26,6 +26,9 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      # pgadmin container requires uid/gid 5050
+      APP_UID: 5050
+      APP_GID: 5050
       VOLSYNC_CAPACITY: 2Gi
       VOLSYNC_STORAGECLASS: syno-iscsi-delete
       VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
