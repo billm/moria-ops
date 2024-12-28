@@ -6,23 +6,23 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Apps
-#  - ./bazarr/ks.yaml
+  - ./bazarr/ks.yaml
   - ./hoarder/ks.yaml
   - ./homepage/ks.yaml
-#  - ./kavita/ks.yaml
+  - ./kavita/ks.yaml
   - ./librechat/ks.yaml
   - ./n8n/ks.yaml
   - ./ollama/ks.yaml
-#  - ./overseerr/ks.yaml
+  - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
-#  - ./plex/ks.yaml
-#  - ./prowlarr/ks.yaml
-#  - ./radarr/ks.yaml
-#  - ./readarr/ks.yaml
-#  - ./recyclarr/ks.yaml
+  - ./plex/ks.yaml
+  - ./prowlarr/ks.yaml
+  - ./radarr/ks.yaml
+  - ./readarr/ks.yaml
+  - ./recyclarr/ks.yaml
   - ./redlib/ks.yaml
-#  - ./sabnzbd/ks.yaml
-#  - ./sonarr/ks.yaml
-#  - ./tautulli/ks.yaml
-#  - ./unpackerr/ks.yaml
+  - ./sabnzbd/ks.yaml
+  - ./sonarr/ks.yaml
+  - ./tautulli/ks.yaml
+  - ./unpackerr/ks.yaml
   - ./valheim/ks.yaml

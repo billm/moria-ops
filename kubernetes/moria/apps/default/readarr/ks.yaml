@@ -23,3 +23,6 @@ spec:
     substitute:
       APP: *app
       VOLSYNC_CAPACITY: 10Gi
+      VOLSYNC_STORAGECLASS: syno-iscsi-delete
+      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
+      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete

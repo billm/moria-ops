@@ -26,3 +26,6 @@ spec:
       APP: *app
       GATUS_SUBDOMAIN: sab
       VOLSYNC_CAPACITY: 1Gi
+      VOLSYNC_STORAGECLASS: syno-iscsi-delete
+      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
+      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
