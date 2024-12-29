@@ -11,8 +11,10 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: rook-ceph-cluster
+    - name: synology-csi-driver
+      namespace: storage
     - name: volsync
+      namespace: volsync-system
     - name: external-secrets-stores
   path: "./kubernetes/moria/apps/default/valheim/app"
   prune: true
