@@ -12,9 +12,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: synology-csi-driver
-      namespace: storage
     - name: volsync
-      namespace: volsync-system
     - name: external-secrets-stores
   path: "./kubernetes/moria/apps/default/plex/app"
   prune: true

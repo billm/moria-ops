@@ -16,9 +16,10 @@ spec:
     kind: GitRepository
     name: home-kubernetes
   dependsOn:
-    - name: cloudnative-pg
-    - name: external-secrets-stores
+    - name: synology-csi-driver
     - name: volsync
+    - name: external-secrets-stores
+    - name: cloudnative-pg
   wait: false
   interval: 30m
   retryInterval: 1m

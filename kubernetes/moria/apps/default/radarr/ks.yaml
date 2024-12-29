@@ -12,6 +12,8 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: cloudnative-pg-cluster
+    - name: synology-csi-driver
+    - name: volsync
     - name: external-secrets-stores
   path: ./kubernetes/moria/apps/default/radarr/app
   prune: true

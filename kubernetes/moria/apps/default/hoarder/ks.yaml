@@ -10,6 +10,10 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+  dependsOn:
+    - name: synology-csi-driver
+    - name: volsync
+    - name: external-secrets-stores
   path: ./kubernetes/moria/apps/default/hoarder/app
   prune: true
   sourceRef:

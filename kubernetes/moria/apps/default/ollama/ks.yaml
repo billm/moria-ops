@@ -31,9 +31,7 @@ spec:
         name: flux-volsync-secret
   dependsOn:
     - name: synology-csi-driver
-      namespace: storage
     - name: volsync
-      namespace: volsync-system
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -67,9 +65,8 @@ spec:
         name: flux-volsync-secret
   dependsOn:
     - name: synology-csi-driver
-      namespace: storage
     - name: volsync
-      namespace: volsync-system
+    - name: external-secrets-stores
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
