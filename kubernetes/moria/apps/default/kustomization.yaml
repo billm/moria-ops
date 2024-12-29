@@ -10,9 +10,10 @@ resources:
   - ./hoarder/ks.yaml
   - ./homepage/ks.yaml
   - ./kavita/ks.yaml
-  - ./librechat/ks.yaml
-  - ./n8n/ks.yaml
-  - ./ollama/ks.yaml
+# borked during csi migration
+#  - ./librechat/ks.yaml
+#  - ./n8n/ks.yaml
+#  - ./ollama/ks.yaml
   - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
