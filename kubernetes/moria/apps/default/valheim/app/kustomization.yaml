@@ -7,4 +7,4 @@ resources:
   - ./configmap.yaml
   - ./helmrelease.yaml
   - ./pvc.yaml
-#  - ../../../../../shared/templates/volsync
+  - ../../../../../shared/templates/volsync
