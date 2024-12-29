@@ -106,14 +106,14 @@ spec:
             secretName: tls.valheim
 
     persistence:
+      # config:
+      #   existingClaim: valheim
+      #   globalMounts:
+      #     - path: /config
       config:
-        existingClaim: valheim
-        globalMounts:
-          - path: /config
-      config-backup:
         existingClaim: valheim-config
         globalMounts:
-          - path: /config.backup
+          - path: /config
       backups:
         type: nfs
         server: ${SECRET_NFS_SERVER}
