@@ -106,10 +106,10 @@ spec:
             secretName: tls.valheim
 
     persistence:
-      # config:
-      #   existingClaim: valheim
-      #   globalMounts:
-      #     - path: /config
+      config-new:
+        existingClaim: valheim
+        globalMounts:
+          - path: /config-new
       config:
         existingClaim: valheim-config
         globalMounts:
