@@ -120,7 +120,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: openebs-hostpath
+              storageClassName: syno-iscsi-retain
               resources:
                 requests:
                   storage: 75Gi
