@@ -58,7 +58,7 @@ spec:
 
     storageClasses:
       syno-iscsi-delete:
-        isDefault: false
+        isDefault: true
         reclaimPolicy: Delete
         volumeBindingMode: Immediate
         parameters:
@@ -80,7 +80,7 @@ spec:
 
     volumeSnapshotClasses:
       syno-iscsi-delete:
-        isDefault: false
+        isDefault: true
         deletionPolicy: Delete
       syno-iscsi-retain:
         isDefault: false
