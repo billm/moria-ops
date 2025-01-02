@@ -41,7 +41,7 @@ spec:
         pod:
           nodeSelector:
             # feature.node.kubernetes.io/cpu-model.id: "116" # AMD Ryzen
-            feature.node.kubernetes.io/cpu-model.vendor_id: "AMD"
+            feature.node.kubernetes.io/cpu-model.vendor_id: AMD
             # kubernetes.io/hostname:: "radon"
         containers:
           app:
