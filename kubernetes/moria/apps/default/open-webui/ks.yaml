@@ -1,0 +1,31 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app open-webui
+  namespace: flux-system
+spec:
+  targetNamespace: default
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+  path: ./kubernetes/moria/apps/default/open-webui/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  dependsOn:
+    - name: volsync
+    - name: synology-csi-driver
+    - name: external-secrets-stores
+  postBuild:
+    substitute:
+      APP: *app
+      VOLSYNC_CAPACITY: 5Gi
+      VOLSYNC_STORAGECLASS: syno-iscsi-delete
+      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
+      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
