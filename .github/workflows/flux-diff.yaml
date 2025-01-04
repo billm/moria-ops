@@ -20,7 +20,7 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
-        paths: ["kubernetes/moria", "kubernetes/shared"]
+        paths: ["kubernetes/moria"]
         resources: ["helmrelease", "kustomization"]
     steps:
       - name: Checkout
