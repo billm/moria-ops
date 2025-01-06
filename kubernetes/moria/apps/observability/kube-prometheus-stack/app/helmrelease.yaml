@@ -154,47 +154,6 @@ spec:
               replacement: $1
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
-      customResourceState:
-          enabled: true
-          config:
-            kind: CustomResourceStateMetrics
-            spec:
-              resources:
-                - groupVersionKind:
-                    group: autoscaling.k8s.io
-                    kind: "VerticalPodAutoscaler"
-                    version: "v1"
-                  labelsFromPath:
-                    verticalpodautoscaler: [metadata, name]
-                    namespace: [metadata, namespace]
-                    target_api_version: [apiVersion]
-                    target_kind: [spec, targetRef, kind]
-                    target_name: [spec, targetRef, name]
-                  metrics:
-                    - name: "vpa_containerrecommendations_target"
-                      help: "VPA container recommendations for memory."
-                      each:
-                        type: Gauge
-                        gauge:
-                          path: [status, recommendation, containerRecommendations]
-                          valueFrom: [target, memory]
-                          labelsFromPath:
-                            container: [containerName]
-                      commonLabels:
-                        resource: "memory"
-                        unit: "byte"
-                    - name: "vpa_containerrecommendations_target"
-                      help: "VPA container recommendations for cpu."
-                      each:
-                        type: Gauge
-                        gauge:
-                          path: [status, recommendation, containerRecommendations]
-                          valueFrom: [target, cpu]
-                          labelsFromPath:
-                            container: [containerName]
-                      commonLabels:
-                        resource: "cpu"
-                        unit: "core"
     grafana:
       enabled: false
       forceDeployDashboards: true
