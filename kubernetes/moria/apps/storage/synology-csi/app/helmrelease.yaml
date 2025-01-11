@@ -43,7 +43,7 @@ spec:
         pullPolicy: IfNotPresent
         tag: v1.11.2
       snapshotter:
-        tag: v7.0.1
+        tag: v8.2.0
         image: registry.k8s.io/sig-storage/csi-snapshotter
         pullPolicy: IfNotPresent
       nodeDriverRegistrar:
