@@ -50,9 +50,10 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 256Mi
-              limits:
                 memory: 512Mi
+              limits:
+                cpu: 15m
+                memory: 1024Mi
           meilisearch:
             image:
               repository: getmeili/meilisearch
@@ -63,9 +64,10 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 128Mi
-              limits:
                 memory: 512Mi
+              limits:
+                cpu: 15m
+                memory: 768Mi
           chrome:
             securityContext:
               runAsUser: 0
@@ -86,10 +88,11 @@ spec:
               - --hide-scrollbars
             resources:
               requests:
-                cpu: 50m
-                memory: 128Mi
+                cpu: 10m
+                memory: 1024Mi
               limits:
-                memory: 2Gi
+                cpu: 15m
+                memory: 1534Mi
     service:
       app:
         controller: hoarder
