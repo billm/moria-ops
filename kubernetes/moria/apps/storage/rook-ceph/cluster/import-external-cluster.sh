@@ -6,7 +6,7 @@ set -e
 #############
 NAMESPACE=${NAMESPACE:="rook-ceph"}
 MON_SECRET_NAME=rook-ceph-mon
-RGW_ADMIN_OPS_USER_SECRET_NAME=rgw-admin-ops-user
+RGW_ADMIN_OPS_USER_SECRET_NAME="" #  rgw-admin-ops-user
 MON_SECRET_CLUSTER_NAME_KEYNAME=cluster-name
 MON_SECRET_FSID_KEYNAME=fsid
 MON_SECRET_ADMIN_KEYRING_KEYNAME=admin-secret
