@@ -52,7 +52,6 @@ spec:
                 cpu: 10m
                 memory: 512Mi
               limits:
-                cpu: 15m
                 memory: 1024Mi
           meilisearch:
             image:
@@ -66,7 +65,6 @@ spec:
                 cpu: 10m
                 memory: 512Mi
               limits:
-                cpu: 15m
                 memory: 768Mi
           chrome:
             securityContext:
@@ -91,7 +89,6 @@ spec:
                 cpu: 10m
                 memory: 1024Mi
               limits:
-                cpu: 15m
                 memory: 1534Mi
     service:
       app:
