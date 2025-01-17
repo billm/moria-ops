@@ -6,7 +6,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./rook-ceph/ks.yaml
+  #- ./rook-ceph/ks.yaml
   # - ./snapshot-controller/ks.yaml
   - ./synology-csi/ks.yaml
   # - ./volsync/ks.yaml
