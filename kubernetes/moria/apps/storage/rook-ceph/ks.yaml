@@ -34,7 +34,7 @@ spec:
   dependsOn:
     - name: rook-ceph
   path: ./kubernetes/moria/apps/storage/rook-ceph/cluster
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
