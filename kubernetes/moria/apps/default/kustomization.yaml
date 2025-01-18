@@ -13,12 +13,12 @@ resources:
 #  - ./librechat/ks.yaml
 #  - ./n8n/ks.yaml
   - ./open-webui/ks.yaml
-  - ./overseerr/ks.yaml
+#  - ./overseerr/ks.yaml
   - ./pgadmin/ks.yaml
   - ./plex/ks.yaml
-  - ./prowlarr/ks.yaml
-  - ./readarr/ks.yaml
+#  - ./prowlarr/ks.yaml
+#  - ./readarr/ks.yaml
   - ./redlib/ks.yaml
-  - ./sabnzbd/ks.yaml
-  - ./tautulli/ks.yaml
+#  - ./sabnzbd/ks.yaml
+#  - ./tautulli/ks.yaml
   - ./valheim/ks.yaml
