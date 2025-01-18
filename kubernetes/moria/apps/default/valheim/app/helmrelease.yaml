@@ -55,8 +55,10 @@ spec:
                   name: valheim-config
             resources:
               requests:
-                cpu: 511m
-                memory: 5528Mi
+                cpu: 110m
+                memory: 5Gi
+              limits:
+                memory: 6Gi
 
     service:
       app:
