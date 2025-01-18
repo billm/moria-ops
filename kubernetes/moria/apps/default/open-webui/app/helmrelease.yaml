@@ -49,10 +49,10 @@ spec:
                   name: openwebui-secret
             resources:
               requests:
-                cpu: 200m
-                memory: 2Gi
+                cpu: 15m
+                memory: 512Mi
               limits:
-                memory: 2Gi
+                memory: 1Gi
     service:
       app:
         controller: *app
