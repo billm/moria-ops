@@ -72,8 +72,8 @@ spec:
               readiness: *probes
             resources:
               requests:
-                cpu: 200m
-                memory: 300Mi
+                cpu: 20m
+                memory: 256Mi
               limits:
                 memory: 500Mi
     defaultPodOptions:

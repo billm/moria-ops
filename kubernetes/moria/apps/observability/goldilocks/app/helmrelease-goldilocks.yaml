@@ -44,9 +44,9 @@ spec:
       resources:
         requests:
           cpu: 15m
-          memory: 105Mi
+          memory: 105M
         limits:
-          memory: 132Mi
+          memory: 128M
 
     dashboard:
       enabled: true
@@ -75,9 +75,9 @@ spec:
       resources:
         requests:
           cpu: 15m
-          memory: 105Mi
+          memory: 105M
         limits:
-          memory: 105Mi
+          memory: 128M
 
     annotations:
       reloader.stakater.com/search: "true"
