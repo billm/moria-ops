@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: synology-csi-driver
+    - name: rook-ceph
     - name: volsync
     - name: external-secrets-stores
   path: "./kubernetes/moria/apps/default/plex/app"
@@ -26,8 +26,8 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      VOLSYNC_CAPACITY: 50Gi
+      VOLSYNC_CAPACITY: 20Gi
       VOLSYNC_CACHE_CAPACITY: 10Gi
-      VOLSYNC_STORAGECLASS: syno-iscsi-delete
-      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
-      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
+      # VOLSYNC_STORAGECLASS: syno-iscsi-delete
+      # VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
+      # VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
