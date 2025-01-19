@@ -11,8 +11,6 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: synology-csi-driver
-    - name: volsync
     - name: external-secrets-stores
   path: ./kubernetes/moria/apps/default/homepage/app
   prune: true
@@ -23,9 +21,3 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
-  postBuild:
-    substitute:
-      APP: *app
-      VOLSYNC_STORAGECLASS: syno-iscsi-delete
-      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
-      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
