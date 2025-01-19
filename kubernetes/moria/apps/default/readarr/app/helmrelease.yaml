@@ -39,7 +39,7 @@ spec:
           app:
             image:
               repository: ghcr.io/elfhosted/readarr-develop
-              tag: 0.4.6.2711
+              tag: 0.4.9.2730
             env:
               READARR__INSTANCE_NAME: Readarr
               READARR__LOG_LEVEL: info
