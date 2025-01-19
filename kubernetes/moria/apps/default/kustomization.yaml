@@ -29,4 +29,4 @@ resources:
 #  - ./sabnzbd/ks.yaml
 #  - ./tautulli/ks.yaml
 ##
-#  - ./valheim/ks.yaml
+  - ./valheim/ks.yaml
