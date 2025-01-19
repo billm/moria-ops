@@ -10,10 +10,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  dependsOn:
-    - name: synology-csi-driver
-    - name: volsync
-    - name: external-secrets-stores
   path: ./kubernetes/moria/apps/default/redlib/app
   prune: true
   sourceRef:
@@ -26,6 +22,3 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      VOLSYNC_STORAGECLASS: syno-iscsi-delete
-      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
-      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete

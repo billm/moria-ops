@@ -24,11 +24,10 @@ spec:
       strategy: rollback
       retries: 3
   dependsOn:
-    - name: synology-csi-driver
+    - name: rook-ceph
       namespace: storage
     - name: volsync
       namespace: volsync-system
-
   values:
     defaultPodOptions:
       securityContext:
