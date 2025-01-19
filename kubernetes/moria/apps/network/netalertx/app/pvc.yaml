@@ -77,7 +77,7 @@ spec:
     repository: "netalertx-db-volsync-r2-secret"
     volumeSnapshotClassName: "ceph-rbd-snapshot"
     cacheCapacity: "1Gi"
-    cacheStorageClassName: "ceph-rbd""
+    cacheStorageClassName: "ceph-rbd"
     cacheAccessModes: ["ReadWriteOnce"]
     storageClassName: "ceph-rbd"
     accessModes: ["ReadWriteOnce"]
