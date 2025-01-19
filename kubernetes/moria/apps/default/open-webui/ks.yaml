@@ -20,12 +20,9 @@ spec:
     name: home-kubernetes
   dependsOn:
     - name: volsync
-    - name: synology-csi-driver
+    - name: rook-ceph
     - name: external-secrets-stores
   postBuild:
     substitute:
       APP: *app
       VOLSYNC_CAPACITY: 5Gi
-      VOLSYNC_STORAGECLASS: syno-iscsi-delete
-      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
-      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete

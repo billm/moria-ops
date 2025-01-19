@@ -16,7 +16,7 @@ spec:
     kind: GitRepository
     name: home-kubernetes
   dependsOn:
-    - name: synology-csi-driver
+    - name: rook-ceph
     - name: volsync
     - name: external-secrets-stores
   wait: true
@@ -27,6 +27,3 @@ spec:
     substitute:
       APP: kavita
       VOLSYNC_CAPACITY: 2Gi
-      VOLSYNC_STORAGECLASS: syno-iscsi-delete
-      VOLSYNC_SNAPSHOTCLASS: syno-iscsi-delete
-      VOLSYNC_CACHE_SNAPSHOTCLASS: syno-iscsi-delete
