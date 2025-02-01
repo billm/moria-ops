@@ -14,7 +14,8 @@ resources:
 #  - ./librechat/ks.yaml
 #  - ./n8n/ks.yaml
 ##
-  - ./open-webui/ks.yaml
+# Migrated to particle hosts
+#  - ./open-webui/ks.yaml
 ##
 #  - ./overseerr/ks.yaml
 ##
