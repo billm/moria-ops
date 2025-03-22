@@ -31,7 +31,7 @@ spec:
           app:
             image:
               repository: ghcr.io/hoarder-app/hoarder
-              tag: 0.21.0@sha256:0fa320ade5d8f93195155e6df9f73f2ebd4176fe23210723a2d940c4715088f3
+              tag: 0.23.0@sha256:97903be067ee5e071238894e8f949c587282f26911e27ae216e52a2f85d1ba7f
             env:
               DATA_DIR: /data
               NEXTAUTH_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
