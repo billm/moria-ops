@@ -6,8 +6,8 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Apps
-  - ./hoarder/ks.yaml
-  - ./homepage/ks.yaml
+#  - ./hoarder/ks.yaml
+#  - ./homepage/ks.yaml
   - ./kavita/ks.yaml
 ##
 # borked during csi migration
