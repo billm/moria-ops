@@ -41,7 +41,7 @@ spec:
           app:
             image:
               repository: jokobsk/netalertx
-              tag: 25.1.19
+              tag: 25.5.24
             resources:
               requests:
                 cpu: 10m
