@@ -129,7 +129,7 @@ spec:
           mongodb:
             image:
               repository: mongo
-              tag: 7.0.16@sha256:24077ea3097e7b5dc5208354c62d607b1d08da6267b1c458d108cf77794b590c
+              tag: 7.0.21@sha256:befd915014332949d8e1f1ddbf8edb1d5066b3f33cded9e0f1e82d5298b52402
             command: ["mongod", "--noauth", "--bind_ip_all"]
             securityContext: *securityContext
             probes:
